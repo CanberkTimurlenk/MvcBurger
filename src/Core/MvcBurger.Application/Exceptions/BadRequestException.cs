@@ -1,4 +1,4 @@
-﻿namespace ComicsBurger.Domain.Exceptions
+﻿namespace MvcBurger.Domain.Exceptions
 {
     public abstract class BadRequestException : Exception
     {

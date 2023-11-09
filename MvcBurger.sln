@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistance", "Persistance", "{1C1DD1BE-BDF4-4951-98E8-5CA8B7EA2914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicsBurger.Domain", "src\Core\ComicsBurger.Domain\ComicsBurger.Domain.csproj", "{3E379145-1C83-4708-A28F-5B5D372EAAA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcBurger.Domain", "src\Core\MvcBurger.Domain\MvcBurger.Domain.csproj", "{3E379145-1C83-4708-A28F-5B5D372EAAA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicsBurger.Application", "src\Core\ComicsBurger.Application\ComicsBurger.Application.csproj", "{5A583073-27C0-41D4-9158-0BC72F4217A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcBurger.Application", "src\Core\MvcBurger.Application\MvcBurger.Application.csproj", "{5A583073-27C0-41D4-9158-0BC72F4217A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicsBurger.Persistance", "ComicsBurger.Persistance\ComicsBurger.Persistance.csproj", "{3C15DE4E-FB95-4574-B5F7-731D2939A223}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcBurger.Persistance", "MvcBurger.Persistance\MvcBurger.Persistance.csproj", "{3C15DE4E-FB95-4574-B5F7-731D2939A223}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

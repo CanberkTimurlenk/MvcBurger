@@ -1,4 +1,4 @@
-﻿namespace ComicsBurger.Domain.Entities.Common
+﻿namespace MvcBurger.Domain.Entities.Common
 {
     public abstract class BaseEntity
     {

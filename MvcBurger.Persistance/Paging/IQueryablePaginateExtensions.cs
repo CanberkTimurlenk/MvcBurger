@@ -1,21 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ComicsBurger.Persistance.Paging
+namespace MvcBurger.Persistance.Paging
 {
     public static class IQueryablePaginateExtensions
     {
-        public static async Task<Paginate<T>> ToPaginateAsync<T>(
+        public static async Task<PagedList<T>> ToPaginatedListAsync<T>(
             this IQueryable<T> source,
             int index,
-            int size,
-            CancellationToken cancellationToken = default
+            int size
             )
         {
-            int count = await source.CountAsync(cancellationToken).ConfigureAwait(false);
+            int count = await source.CountAsync().ConfigureAwait(false);
 
-            List<T> items = await source.Skip(index * size).Take(size).ToListAsync(cancellationToken).ConfigureAwait(false);
+            List<T> items = await source.Skip(index * size).Take(size).ToListAsync().ConfigureAwait(false);
 
-            Paginate<T> list = new()
+            PagedList<T> list = new()
             {
                 Index = index,
                 Count = count,
@@ -26,6 +25,5 @@ namespace ComicsBurger.Persistance.Paging
             return list;
 
         }
-
     }
 }
