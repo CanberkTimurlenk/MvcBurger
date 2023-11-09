@@ -7,6 +7,7 @@ namespace MvcBurger.Persistance.Repositories
     public class WriteRepository<TEntity> : IWriteRepository<TEntity>
         where TEntity : BaseEntity, new()
     {
+        //
         private readonly BurgerDbContext _context;
 
         public WriteRepository(BurgerDbContext context)
