@@ -7,15 +7,48 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Drink - Copy\**" />
+    <Compile Remove="Features\ExtraIngredient - Copy\**" />
+    <Compile Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
+    <Compile Remove="Features\Menu\**" />
+    <Compile Remove="Features\Order - Copy\**" />
+    <Compile Remove="Features\Sauce - Copy\**" />
+    <Compile Remove="Features\SauceOrder - Copy\**" />
+    <Compile Remove="Features\Size - Copy\**" />
+    <EmbeddedResource Remove="Features\Drink - Copy\**" />
+    <EmbeddedResource Remove="Features\ExtraIngredient - Copy\**" />
+    <EmbeddedResource Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
+    <EmbeddedResource Remove="Features\Menu\**" />
+    <EmbeddedResource Remove="Features\Order - Copy\**" />
+    <EmbeddedResource Remove="Features\Sauce - Copy\**" />
+    <EmbeddedResource Remove="Features\SauceOrder - Copy\**" />
+    <EmbeddedResource Remove="Features\Size - Copy\**" />
+    <None Remove="Features\Drink - Copy\**" />
+    <None Remove="Features\ExtraIngredient - Copy\**" />
+    <None Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
+    <None Remove="Features\Menu\**" />
+    <None Remove="Features\Order - Copy\**" />
+    <None Remove="Features\Sauce - Copy\**" />
+    <None Remove="Features\SauceOrder - Copy\**" />
+    <None Remove="Features\Size - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MvcBurger.Domain\MvcBurger.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Menu\" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.1.1" />
+    <Folder Include="Features\Drinks\" />
+    <Folder Include="Features\MenuOrders\" />
+    <Folder Include="Features\ExtraIngredients\" />
+    <Folder Include="Features\Menus\" />
+    <Folder Include="Features\SauceOrders\" />
+    <Folder Include="Features\Orders\" />
+    <Folder Include="Features\Sauces\" />
   </ItemGroup>
 
 </Project>
