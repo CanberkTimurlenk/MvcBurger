@@ -1,8 +1,10 @@
-﻿namespace MvcBurger.Domain.Entities
+﻿using MvcBurger.Domain.Entities.Common;
+using MvcBurger.Domain.Enums;
+
+namespace MvcBurger.Domain.Entities
 {
-    public class Order
+    public class Order : IEntity
     {
-        public Guid Id { get; set; }
         public ICollection<MenuOrder> MenuOrder { get; set; }
         public ICollection<SauceOrder> SauceOrder { get; set; }
 

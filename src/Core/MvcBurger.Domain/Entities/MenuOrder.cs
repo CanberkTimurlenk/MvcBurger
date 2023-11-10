@@ -1,6 +1,8 @@
-﻿namespace MvcBurger.Domain.Entities
+﻿using MvcBurger.Domain.Entities.Common;
+
+namespace MvcBurger.Domain.Entities
 {
-    public class MenuOrder
+    public class MenuOrder : IEntity
     {
         public Guid MenuOrderId { get; set; }
         public Guid MenuId { get; set; }

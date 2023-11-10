@@ -1,4 +1,4 @@
-﻿namespace MvcBurger.Domain.Entities
+﻿namespace MvcBurger.Domain.Enums
 {
     public enum Size
     {
