@@ -1,10 +1,11 @@
 ﻿using MvcBurger.Domain.Entities.Common;
+using MvcBurger.Domain.Enums;
 
 namespace MvcBurger.Domain.Entities
 {
-    public class MenuOrder : IEntity
+    public class OrderItem : BaseEntity, IEntity
     {
-        public Guid MenuOrderId { get; set; }
+
         public Guid MenuId { get; set; }
         public Menu Menu { get; set; }
 
@@ -13,6 +14,8 @@ namespace MvcBurger.Domain.Entities
 
         public Guid DrinkId { get; set; }
         public Drink Drink { get; set; }
+
+        public Size Size { get; set; }
 
         public ICollection<MenuOrderExtraIngredient> MenuOrderExtraIngredient { get; set; }
     }

@@ -3,17 +3,16 @@ using MvcBurger.Domain.Enums;
 
 namespace MvcBurger.Domain.Entities
 {
-    public class Order : IEntity
+    public class Order : BaseEntity, IEntity
     {
-        public ICollection<MenuOrder> MenuOrder { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
         public ICollection<SauceOrder> SauceOrder { get; set; }
 
         public decimal TotalPrice { get; set; }
+        public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
 
-        public int UserId { get; set; }
-        public User User { get; set; }
-        public Size Size { get; set; }
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
     }
-
 }
