@@ -10,38 +10,23 @@
     <Compile Remove="Features\Drink - Copy\**" />
     <Compile Remove="Features\ExtraIngredient - Copy\**" />
     <Compile Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
-    <Compile Remove="Features\ExtraIngredients\**" />
-    <Compile Remove="Features\MenuOrders\**" />
     <Compile Remove="Features\Order - Copy\**" />
-    <Compile Remove="Features\Orders\**" />
     <Compile Remove="Features\Sauce - Copy\**" />
     <Compile Remove="Features\SauceOrder - Copy\**" />
-    <Compile Remove="Features\SauceOrders\**" />
-    <Compile Remove="Features\Sauces\**" />
     <Compile Remove="Features\Size - Copy\**" />
     <EmbeddedResource Remove="Features\Drink - Copy\**" />
     <EmbeddedResource Remove="Features\ExtraIngredient - Copy\**" />
     <EmbeddedResource Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
-    <EmbeddedResource Remove="Features\ExtraIngredients\**" />
-    <EmbeddedResource Remove="Features\MenuOrders\**" />
     <EmbeddedResource Remove="Features\Order - Copy\**" />
-    <EmbeddedResource Remove="Features\Orders\**" />
     <EmbeddedResource Remove="Features\Sauce - Copy\**" />
     <EmbeddedResource Remove="Features\SauceOrder - Copy\**" />
-    <EmbeddedResource Remove="Features\SauceOrders\**" />
-    <EmbeddedResource Remove="Features\Sauces\**" />
     <EmbeddedResource Remove="Features\Size - Copy\**" />
     <None Remove="Features\Drink - Copy\**" />
     <None Remove="Features\ExtraIngredient - Copy\**" />
     <None Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
-    <None Remove="Features\ExtraIngredients\**" />
-    <None Remove="Features\MenuOrders\**" />
     <None Remove="Features\Order - Copy\**" />
-    <None Remove="Features\Orders\**" />
     <None Remove="Features\Sauce - Copy\**" />
     <None Remove="Features\SauceOrder - Copy\**" />
-    <None Remove="Features\SauceOrders\**" />
-    <None Remove="Features\Sauces\**" />
     <None Remove="Features\Size - Copy\**" />
   </ItemGroup>
 
@@ -51,23 +36,18 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="MediatR" Version="12.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\ExtraIngredients\" />
-    <Folder Include="Features\Commands\MenuOrders\" />
-    <Folder Include="Features\Commands\ExtraIngredientMenuOrders\" />
-    <Folder Include="Features\Commands\Orders\" />
-    <Folder Include="Features\Commands\Sauces\" />
-    <Folder Include="Features\Commands\SauceOrders\" />
-    <Folder Include="Features\Queries\ExtraIngredientMenuOrders\" />
-    <Folder Include="Features\Queries\ExtraIngredients\" />
-    <Folder Include="Features\Queries\MenuOrders\" />
-    <Folder Include="Features\Queries\Menus\" />
-    <Folder Include="Features\Queries\Orders\" />
-    <Folder Include="Features\Queries\SauceOrders\" />
-    <Folder Include="Features\Queries\Sauces\" />
+    <Folder Include="Features\MenuOrders\Queries\" />
+    <Folder Include="Features\SauceOrders\Queries\" />
+    <Folder Include="Features\Sauces\Profiles\" />
+    <Folder Include="Features\Sauces\Queries\" />
+    <Folder Include="Features\Users\Commands\" />
+    <Folder Include="Features\Users\Profiles\" />
+    <Folder Include="Features\Users\Queries\" />
   </ItemGroup>
 
 </Project>
