@@ -2,7 +2,7 @@
 
 namespace MvcBurger.Application.Repositories
 {
-    public interface IMenuOrdersRepository : IRepository<MenuOrder>
+    public interface ISauceRepository : IRepository<Sauce>
     {
     }
 }
