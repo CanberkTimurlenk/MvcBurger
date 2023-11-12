@@ -29,7 +29,7 @@ namespace MvcBurger.Application.Features.Commands.Drinks.Create
             // ...........
 
 
-            var menuOrderExtraIngredient = _mapper.Map<MenuOrderExtraIngredient>(request);
+            var menuOrderExtraIngredient = _mapper.Map<OrderItemExtraIngredient>(request);
 
 
             await _menuOrderExtraIngredientRepository.AddAsync(menuOrderExtraIngredient);

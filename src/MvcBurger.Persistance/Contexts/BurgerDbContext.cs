@@ -1,9 +1,10 @@
 ﻿using MvcBurger.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MvcBurger.Persistance.Contexts
 {
-    public class BurgerDbContext : DbContext
+    public class BurgerDbContext : IdentityDbContext<ApplicationUser>
     {
 
         public DbSet<Menu> Menus { get; set; }
@@ -13,7 +14,7 @@ namespace MvcBurger.Persistance.Contexts
         public DbSet<Sauce> Sauces { get; set; }
         public DbSet<SauceOrder> SauceOrders { get; set; }
         public DbSet<ExtraIngredient> ExtraIngredients { get; set; }
-        public DbSet<MenuOrderExtraIngredient> MenuOrderExtraIngredient { get; set; }
+        public DbSet<OrderItemExtraIngredient> MenuOrderExtraIngredient { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -23,6 +24,7 @@ namespace MvcBurger.Persistance.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(BurgerDbContext).Assembly);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

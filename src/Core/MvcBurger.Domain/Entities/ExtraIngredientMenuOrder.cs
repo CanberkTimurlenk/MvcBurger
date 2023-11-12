@@ -2,7 +2,7 @@
 
 namespace MvcBurger.Domain.Entities
 {
-    public class MenuOrderExtraIngredient : IEntity
+    public class OrderItemExtraIngredient : IEntity
     {
         public Guid MenuOrderId { get; set; }
         public OrderItem MenuOrder { get; set; }

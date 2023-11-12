@@ -7,7 +7,7 @@ namespace MvcBurger.Domain.Entities
         public string Name { get; set; }
         public decimal Price { get; set; }
 
-        public ICollection<MenuOrderExtraIngredient> MenuOrderExtraIngredient { get; set; }
+        public ICollection<OrderItemExtraIngredient> MenuOrderExtraIngredient { get; set; }
 
     }
 

@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\MenuOrders\Queries\" />
+    <Folder Include="Features\OrderItems\Queries\" />
     <Folder Include="Features\SauceOrders\Queries\" />
     <Folder Include="Features\Sauces\Profiles\" />
     <Folder Include="Features\Sauces\Queries\" />

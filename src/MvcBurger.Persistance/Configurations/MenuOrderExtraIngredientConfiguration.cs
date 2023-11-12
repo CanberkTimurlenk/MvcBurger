@@ -4,9 +4,9 @@ using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Persistance.Configurations
 {
-    public class MenuOrderExtraIngredientConfiguration : IEntityTypeConfiguration<MenuOrderExtraIngredient>
+    public class MenuOrderExtraIngredientConfiguration : IEntityTypeConfiguration<OrderItemExtraIngredient>
     {
-        public void Configure(EntityTypeBuilder<MenuOrderExtraIngredient> builder)
+        public void Configure(EntityTypeBuilder<OrderItemExtraIngredient> builder)
         {
             builder
                 .HasKey(moei => new { moei.ExtraIngredientId, moei.MenuOrderId });

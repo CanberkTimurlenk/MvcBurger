@@ -2,7 +2,7 @@
 
 namespace MvcBurger.Application.Repositories.ExtraIngredientMenuOrder
 {
-    public interface IOrderItemExtraIngredientRepository : IRepository<MenuOrderExtraIngredient>
+    public interface IOrderItemExtraIngredientRepository : IRepository<OrderItemExtraIngredient>
     {
 
     }

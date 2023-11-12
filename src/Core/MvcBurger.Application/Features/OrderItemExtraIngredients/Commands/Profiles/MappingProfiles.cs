@@ -8,8 +8,8 @@ namespace MvcBurger.Application.Features.MenuOrderExtraIngredients.Commands.Prof
     {
         public MappingProfiles()
         {
-            CreateMap<MenuOrderExtraIngredient, CreateOrderItemExtraIngredientRequest>().ReverseMap();
-            CreateMap<MenuOrderExtraIngredient, CreateOrderItemExtraIngredientResponse>().ReverseMap();
+            CreateMap<OrderItemExtraIngredient, CreateOrderItemExtraIngredientRequest>().ReverseMap();
+            CreateMap<OrderItemExtraIngredient, CreateOrderItemExtraIngredientResponse>().ReverseMap();
         }
     }
 }
