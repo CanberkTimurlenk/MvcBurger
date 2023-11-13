@@ -1,12 +1,10 @@
-﻿using MvcBurger.Application.Repositories;
-using MvcBurger.Application.RequestFeatures;
-using MvcBurger.Domain.Entities.Common;
+﻿using MvcBurger.Domain.Entities.Common;
 using MvcBurger.Persistance.Contexts;
-using MvcBurger.Persistance.Paging;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using MvcBurger.Application.Contracts.Repositories.Common;
 
-namespace MvcBurger.Persistance.Repositories
+namespace MvcBurger.Persistance.Repositories.Common
 {
 
     public abstract class EfBaseRepository<TEntity> : IRepository<TEntity>
@@ -44,9 +42,9 @@ namespace MvcBurger.Persistance.Repositories
 
         }
 
-        public async Task<TEntity?> FindAsync(string id)
+        public async Task<TEntity?> FindAsync(Guid id)
         {
-            return await Table.FindAsync(Guid.Parse(id)); // TODO: check if this works
+            return await Table.FindAsync(id); // TODO: check if this works
         }
 
         public async Task<TEntity?> Get(Expression<Func<TEntity, bool>> filter)
@@ -54,44 +52,36 @@ namespace MvcBurger.Persistance.Repositories
             return await Table.FirstOrDefaultAsync(filter);
         }
 
-        public async Task<int> AddRangeAsync(IEnumerable<TEntity> entities)
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
 
             await _context.AddRangeAsync(entities);
-            return await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> AddAsync(TEntity entity)
+        public async Task AddAsync(TEntity entity)
         {
             await Table.AddAsync(entity);
-
-            return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> RemoveRangeAsync(IEnumerable<TEntity> entities)
+        public void RemoveRange(IEnumerable<TEntity> entities)
         {
             Table.RemoveRange(entities);
-            return await _context.SaveChangesAsync() > 0;
-
         }
 
-        public async Task<bool> RemoveAsync(string id)
+        public async Task RemoveAsync(Guid id)
         {
             var entity = await FindAsync(id);
-            _context.Remove(entity);
-            return await _context.SaveChangesAsync() > 0;
+
+            if (entity is not null)
+                Table.Remove(entity);
 
         }
 
-        public TEntity UpdateAsync(TEntity entity)
+        public void UpdateAsync(TEntity entity)
         {
-
             Table.Update(entity);
-            _context.SaveChangesAsync();
-            return entity;
+
         }
-
-
     }
 }
 

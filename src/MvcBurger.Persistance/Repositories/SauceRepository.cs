@@ -1,6 +1,7 @@
-﻿using MvcBurger.Application.Repositories;
+﻿using MvcBurger.Application.Contracts.Repositories.Sauces;
 using MvcBurger.Domain.Entities;
 using MvcBurger.Persistance.Contexts;
+using MvcBurger.Persistance.Repositories.Common;
 
 namespace MvcBurger.Persistance.Repositories
 {
