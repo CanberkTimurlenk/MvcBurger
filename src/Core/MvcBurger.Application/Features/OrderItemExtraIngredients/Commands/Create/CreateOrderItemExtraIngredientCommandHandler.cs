@@ -1,18 +1,19 @@
 ﻿using AutoMapper;
 using MediatR;
-using MvcBurger.Application.Repositories.ExtraIngredientMenuOrder;
+using MvcBurger.Application.Contracts.Repositories.OrderItemExtraIngredients;
+using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.Commands.Drinks.Create
 {
     public class CreateOrderItemExtraIngredientCommandHandler : IRequestHandler<CreateOrderItemExtraIngredientRequest, CreateOrderItemExtraIngredientResponse>
     {
-        private readonly IOrderItemExtraIngredientRepository _menuOrderExtraIngredientRepository;
+        private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
 
-        public CreateOrderItemExtraIngredientCommandHandler(IOrderItemExtraIngredientRepository menuOrderExtraIngredientRepository, IMapper mapper)
+        public CreateOrderItemExtraIngredientCommandHandler(IRepositoryManager repositoryManager, IMapper mapper)
         {
-            _menuOrderExtraIngredientRepository = menuOrderExtraIngredientRepository;
+            _repositoryManager = repositoryManager;
             _mapper = mapper;
             // business rules if exists
 
@@ -21,22 +22,14 @@ namespace MvcBurger.Application.Features.Commands.Drinks.Create
         public async Task<CreateOrderItemExtraIngredientResponse> Handle(CreateOrderItemExtraIngredientRequest request, CancellationToken cancellationToken)
         {
 
-            // service logic
-            // ...........
-            // ...........
-            // ...........
-            // ...........
-            // ...........
+            var orderItemExtraIngredient = _mapper.Map<OrderItemExtraIngredient>(request);
 
 
-            var menuOrderExtraIngredient = _mapper.Map<OrderItemExtraIngredient>(request);
+            await _repositoryManager.OrderItemExtraIngredient.AddAsync(orderItemExtraIngredient);
 
 
-            await _menuOrderExtraIngredientRepository.AddAsync(menuOrderExtraIngredient);
-
-
-            CreateOrderItemExtraIngredientResponse createdMenuOrderExtraIngredientResponse = _mapper.Map<CreateOrderItemExtraIngredientResponse>(menuOrderExtraIngredient);
-            return createdMenuOrderExtraIngredientResponse;
+            CreateOrderItemExtraIngredientResponse createdOrderItemExtraIngredientResponse = _mapper.Map<CreateOrderItemExtraIngredientResponse>(orderItemExtraIngredient);
+            return createdOrderItemExtraIngredientResponse;
 
 
         }

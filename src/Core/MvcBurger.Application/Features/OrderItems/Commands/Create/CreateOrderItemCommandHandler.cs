@@ -1,42 +1,33 @@
 ﻿using AutoMapper;
 using MediatR;
-using MvcBurger.Application.Repositories;
+using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.Commands.Drinks.Create
 {
-    public class CreateOrderItemCommandHandler : IRequestHandler<CreateOrderItemRequest, CreateOrderItemResponse>
+    public class CreateOrderItemCommandHandler : IRequestHandler<CreateOrderItemRequest, DeleteOrderItemResponse>
     {
-        private readonly IOrderItemRepository _orderItemRepository;
+        private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
 
-        public CreateOrderItemCommandHandler(IOrderItemRepository orderItemRepository, IMapper mapper)
+        public CreateOrderItemCommandHandler(IRepositoryManager repositoryManager, IMapper mapper)
         {
-            _orderItemRepository = orderItemRepository;
+            _repositoryManager = repositoryManager;
             _mapper = mapper;
             // business rules if exists
 
         }
 
-        public async Task<CreateOrderItemResponse> Handle(CreateOrderItemRequest request, CancellationToken cancellationToken)
+        public async Task<DeleteOrderItemResponse> Handle(CreateOrderItemRequest request, CancellationToken cancellationToken)
         {
 
-            // service logic
-            // ...........
-            // ...........
-            // ...........
-            // ...........
-            // ...........
-
-
             var orderItem = _mapper.Map<OrderItem>(request);
-            
-            await _orderItemRepository.AddAsync(orderItem);
 
+            await _repositoryManager.OrderItem.AddAsync(orderItem);
+            await _repositoryManager.SaveAsync();
 
-            CreateOrderItemResponse createdOrderItemResponse = _mapper.Map<CreateOrderItemResponse>(orderItem);
+            DeleteOrderItemResponse createdOrderItemResponse = _mapper.Map<DeleteOrderItemResponse>(orderItem);
             return createdOrderItemResponse;
-
 
         }
     }

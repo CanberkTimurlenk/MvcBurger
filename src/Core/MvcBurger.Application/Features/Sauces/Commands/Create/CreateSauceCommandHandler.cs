@@ -1,18 +1,19 @@
 ﻿using AutoMapper;
 using MediatR;
-using MvcBurger.Application.Repositories;
+using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
+using MvcBurger.Application.Contracts.Repositories.Sauces;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.Commands.Drinks.Create
 {
     public class CreateSauceCommandHandler : IRequestHandler<CreateSauceRequest, CreateSauceResponse>
     {
-        private readonly ISauceRepository _sauceRepository;
+        private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
 
-        public CreateSauceCommandHandler(ISauceRepository sauceRepository, IMapper mapper)
+        public CreateSauceCommandHandler(IRepositoryManager repositoryManager, IMapper mapper)
         {
-            _sauceRepository = sauceRepository;
+            _repositoryManager = repositoryManager;
             _mapper = mapper;
             // business rules if exists
 
@@ -32,7 +33,8 @@ namespace MvcBurger.Application.Features.Commands.Drinks.Create
             var sauce = _mapper.Map<Sauce>(request);
             sauce.Id = Guid.NewGuid();
 
-            await _sauceRepository.AddAsync(sauce);
+            await _repositoryManager.Sauce.AddAsync(sauce);
+            await _repositoryManager.SaveAsync();
 
 
             CreateSauceResponse createdSauceReponse = _mapper.Map<CreateSauceResponse>(sauce);

@@ -1,31 +1,28 @@
 ﻿using AutoMapper;
 using MediatR;
-using MvcBurger.Application.Repositories;
+using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.Commands.Drinks.Create
 {
     public class CreateDrinkCommandHandler : IRequestHandler<CreateDrinkRequest, CreateDrinkResponse>
     {
-        private readonly IDrinkRepository _drinkRepository;
+        private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
 
-        public CreateDrinkCommandHandler(IDrinkRepository drinkRepository, IMapper mapper)
+        public CreateDrinkCommandHandler(IRepositoryManager repositoryManager, IMapper mapper)
         {
-            _drinkRepository = drinkRepository;
+            _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
-
         }
 
         public async Task<CreateDrinkResponse> Handle(CreateDrinkRequest request, CancellationToken cancellationToken)
         {
-
-            
             var drink = _mapper.Map<Drink>(request);
             drink.Id = Guid.NewGuid();
 
-            await _drinkRepository.AddAsync(drink);
+            await _repositoryManager.Drink.AddAsync(drink);
+            await _repositoryManager.SaveAsync();
 
 
             CreateDrinkResponse createdDrinkResponse = _mapper.Map<CreateDrinkResponse>(drink);
