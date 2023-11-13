@@ -2,6 +2,6 @@
 {
     public enum OrderStatus
     {
-        Completed, Cancelled, WaitingPayment, Pending, PaymentReceived, WaitingDelivery
+        Completed, Cancelled, WaitingPayment, Pending, PaymentReceived, WaitingDelivery, Cart
     }
 }
