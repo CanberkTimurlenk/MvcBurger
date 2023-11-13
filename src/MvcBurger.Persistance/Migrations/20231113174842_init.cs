@@ -237,6 +237,7 @@ namespace MvcBurger.Persistance.Migrations
                     MenuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DrinkId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Amount = table.Column<int>(type: "int", nullable: false),
                     Size = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using MvcBurger.Application.Contracts.Services;
 using MvcBurger.Application.Exceptions.NotFoundException;
 using MvcBurger.Application.Exceptions.UnauthorizedException;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Persistance.Services
 {
-    public class AuthService
+    public class AuthService : IAuthService
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
@@ -24,10 +25,14 @@ namespace MvcBurger.Persistance.Services
             if (user is null)
                 throw new UserNotFoundException(email);
 
-            SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
+            var result = await _signInManager.PasswordSignInAsync(email, password, false, false);
+
+
 
             if (result.Succeeded)
                 return true;
+
+
 
             throw new UserAuthenticationException(email);
         }

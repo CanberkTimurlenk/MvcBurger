@@ -320,6 +320,9 @@ namespace MvcBurger.Persistance.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("DrinkId")
                         .HasColumnType("uniqueidentifier");
 

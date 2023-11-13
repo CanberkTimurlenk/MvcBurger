@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MvcBurger.Application.Contracts.Services;
 using MvcBurger.Application.DTOs.User.Create;
 using MvcBurger.Application.Exceptions.BadRequestException;
 using MvcBurger.Domain.Entities;
@@ -6,7 +7,7 @@ using MvcBurger.Domain.Entities;
 namespace MvcBurger.Persistance.Services
 {
 
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly UserManager<AppUser> _userManager;
 

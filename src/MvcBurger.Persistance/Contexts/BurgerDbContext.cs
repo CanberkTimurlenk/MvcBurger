@@ -18,7 +18,7 @@ namespace MvcBurger.Persistance.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=127.0.0.1,11433;Database=HamburgerDb;User ID=SA;Password=Ab12345678;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-6262GND\\SQLEXPRESS;Initial Catalog=MVCHamburgerDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
