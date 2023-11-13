@@ -1,0 +1,111 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MvcBurger</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/log.css">
+    
+
+</head>
+<body>
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <div id="menu-btn" class="fas fa-bars icons"></div>
+        <div id="search-btn" class="fas fa-search icons"></div>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#menu">menu</a>
+            <a href="#about">about</a>
+            <span class="space"></span>
+            <a href="#contact">contact</a>
+        </nav>
+        <div>
+            <a asp-action="UserOrder" asp-controller="Order" class="fas fa-shopping-cart icons"></a>
+            <a asp-action="Login" asp-controller="Access" class="fas fa-login icons">Login</a>
+            <a asp-action="Register" asp-controller="Access" class="fas fa-register icons">Register</a>
+        </div>
+
+        <a href="#home" class="logo"><img src="/images/logo.png" alt=""></a>
+
+        <form action="" class="search-form">
+            <input type="search" name="" placeholder="search here..." id="search-box">
+            <label for="search-box" class="fas fa-search icons"></label>
+        </form>
+
+    </header>
+
+    <!-- header section ends  -->
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
+        <div class="content">
+            @RenderBody()
+
+            
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+    
+    <!-- contact section starts  -->
+
+    <section class="contact" id="contact">
+                
+
+    </section>
+
+    <!-- contact section ends -->
+    <!-- footer section starts  -->
+
+    <section class="footer">
+
+        <div class="links">
+            <a href="#home" class="btn">home</a>
+            <a href="#menu" class="btn">menu</a>
+            <a href="#about" class="btn">about</a>
+            <a href="#reviews" class="btn">reviews</a>
+            <a href="#contact" class="btn">contact</a>
+            <a href="#blogs" class="btn">blogs</a>
+        </div>
+
+        <p class="credit"> created by <span><a href="https://freewebsitecode.com/">Free Website Code</a></span> | all rights reserved! </p><br>
+
+    </section>
+
+    <!-- footer section ends -->
+    <!-- custom js file link      -->
+    @*<script src="/js/script.js"></script>*@
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+
+        AOS.init({
+            duration: 800,
+        });
+
+    </script>
+    <script src="~/js/loginregister.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
