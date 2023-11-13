@@ -4,8 +4,8 @@ namespace MvcBurger.Domain.Entities
 {
     public class OrderItemExtraIngredient : IEntity
     {
-        public Guid MenuOrderId { get; set; }
-        public OrderItem MenuOrder { get; set; }
+        public Guid OrderItemId { get; set; }
+        public OrderItem OrderItem { get; set; }
 
         public Guid ExtraIngredientId { get; set; }
         public ExtraIngredient ExtraIngredient { get; set; }

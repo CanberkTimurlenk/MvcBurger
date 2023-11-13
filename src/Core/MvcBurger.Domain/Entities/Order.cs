@@ -11,8 +11,8 @@ namespace MvcBurger.Domain.Entities
         public decimal TotalPrice { get; set; }
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
 
-        public string ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
 
     }
 }
