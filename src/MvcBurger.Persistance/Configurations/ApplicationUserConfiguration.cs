@@ -4,9 +4,9 @@ using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Persistance.Configurations
 {
-    public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
+    public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
     {
-        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
+        public void Configure(EntityTypeBuilder<AppUser> builder)
         {
 
         }

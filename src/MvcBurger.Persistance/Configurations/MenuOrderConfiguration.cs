@@ -14,7 +14,7 @@ namespace MvcBurger.Persistance.Configurations
 
             builder
                 .HasOne(mo => mo.Menu)
-                .WithMany(m => m.MenuOrder)
+                .WithMany(m => m.OrderItem)
                 .HasForeignKey(mo => mo.MenuId);
 
             builder
@@ -24,7 +24,7 @@ namespace MvcBurger.Persistance.Configurations
 
             builder
                 .HasOne(mo => mo.Drink)
-                .WithMany(d => d.MenuOrder)
+                .WithMany(d => d.OrderItem)
                 .HasForeignKey(mo => mo.DrinkId);
         }
     }

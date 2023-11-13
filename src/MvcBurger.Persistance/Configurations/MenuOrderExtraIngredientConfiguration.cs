@@ -9,17 +9,17 @@ namespace MvcBurger.Persistance.Configurations
         public void Configure(EntityTypeBuilder<OrderItemExtraIngredient> builder)
         {
             builder
-                .HasKey(moei => new { moei.ExtraIngredientId, moei.MenuOrderId });
+                .HasKey(moei => new { moei.ExtraIngredientId, moei.OrderItemId });
 
             builder
-                .HasOne(moei => moei.MenuOrder)
-                .WithMany(mo => mo.MenuOrderExtraIngredient)
-                .HasForeignKey(moei => moei.MenuOrderId);
+                .HasOne(moei => moei.OrderItem)
+                .WithMany(mo => mo.OrderItemExtraIngredient)
+                .HasForeignKey(moei => moei.OrderItemId);
 
 
             builder
                 .HasOne(moei => moei.ExtraIngredient)
-                .WithMany(ei => ei.MenuOrderExtraIngredient)
+                .WithMany(ei => ei.OrderItemExtraIngredient)
                 .HasForeignKey(moei => moei.ExtraIngredientId);
         }
     }

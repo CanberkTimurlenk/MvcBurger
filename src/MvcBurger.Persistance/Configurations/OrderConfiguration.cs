@@ -9,9 +9,9 @@ namespace MvcBurger.Persistance.Configurations
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.HasOne(o => o.ApplicationUser)
+            builder.HasOne(o => o.AppUser)
                    .WithMany(u => u.Orders)
-                   .HasForeignKey(o => o.ApplicationUserId);
+                   .HasForeignKey(o => o.AppUserId);
 
         }
     }
