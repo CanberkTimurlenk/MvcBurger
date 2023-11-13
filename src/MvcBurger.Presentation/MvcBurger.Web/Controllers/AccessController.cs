@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
 using MvcBurger.Application.Exceptions.BadRequestException;
 using MvcBurger.Application.Features.Users.Queries.Login;
+using MvcBurger.Application.Features.Users.Queries.Logout;
 using MvcBurger.Domain.Entities;
 using MvcBurger.Web.Models.VMs;
 
@@ -23,7 +24,7 @@ namespace MvcBurger.Web.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(UserLoginVM loginVM)
+        public async Task<IActionResult> Login(UserLoginVM loginVM, string ReturnUrl)
         {
             LoginAppUserRequest request = new LoginAppUserRequest()
             {
@@ -31,7 +32,7 @@ namespace MvcBurger.Web.Controllers
                 Email = loginVM.Email
             };
             LoginAppUserResponse loginResponse;
-            
+
             try
             {
                 loginResponse = await _mediator.Send(request);
@@ -44,8 +45,14 @@ namespace MvcBurger.Web.Controllers
 
             if (loginResponse.UserId is not null)
             {
-                
-                return RedirectToAction("Index", "Home");
+                if (!string.IsNullOrEmpty(ReturnUrl))
+                {
+                    return LocalRedirect(ReturnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             else
                 return View(loginVM);
@@ -59,10 +66,6 @@ namespace MvcBurger.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(CreateUserVM userVM)
         {
-
-
-
-
             var request = new CreateAppUserRequest()
             {
                 Address = userVM.Address,
@@ -91,6 +94,12 @@ namespace MvcBurger.Web.Controllers
                 // burda mesaj mevcut geri bildirim verebilirsin
                 return View(userVM);
             }
+        }
+        public async Task<IActionResult> Logout()
+        {
+            LogoutAppUserRequest request = new LogoutAppUserRequest();
+            await _mediator.Send(request);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

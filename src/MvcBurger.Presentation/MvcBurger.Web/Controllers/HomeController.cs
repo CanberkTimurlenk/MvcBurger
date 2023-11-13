@@ -16,7 +16,7 @@ namespace MvcBurger.Web.Controllers
         {
             _mediator = mediator;
         }
-
+        
         public async Task<IActionResult> Index()
         {
 
