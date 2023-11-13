@@ -2,16 +2,15 @@
 using MvcBurger.Application.Features.Commands.Drinks.Create;
 using MvcBurger.Domain.Entities;
 
-namespace MvcBurger.Application.Features.MenuOrders.Profiles
+namespace MvcBurger.Application.Features.OrderItems.Profiles
 {
     public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {
-            CreateMap<OrderItemExtraIngredient, CreateMenuOrderExtraIngredientResponse>().ReverseMap();
-            CreateMap<OrderItemExtraIngredient, CreateMenuOrderExtraIngredientResponse>().ReverseMap();
+            CreateMap<OrderItemExtraIngredient, CreateOrderItemExtraIngredientResponse>().ReverseMap();
+            CreateMap<OrderItemExtraIngredient, CreateOrderItemExtraIngredientResponse>().ReverseMap();
 
         }
     }
 }
-z
