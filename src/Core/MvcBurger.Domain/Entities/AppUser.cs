@@ -3,7 +3,7 @@ using MvcBurger.Domain.Entities.Common;
 
 namespace MvcBurger.Domain.Entities
 {
-    public class ApplicationUser : IdentityUser, IEntity
+    public class AppUser : IdentityUser, IEntity
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
