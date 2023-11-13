@@ -1,24 +1,23 @@
 ﻿using AutoMapper;
 using MediatR;
-using MvcBurger.Application.Repositories;
+using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 
 namespace MvcBurger.Application.Features.ExtraIngredients.Queries.GetAll
 {
     public class GetAllExtraIngredientsQueryHandler : IRequestHandler<GetAllExtraIngredientsRequest, GetAllExtraIngredientsResponse>
     {
         private readonly IMapper _mapper;
-        private readonly IExtraIngredientRepository _extraIngredientRepository;
+        private readonly IRepositoryManager _repositoryManager;
 
-        public GetAllExtraIngredientsQueryHandler(IMapper mapper, IExtraIngredientRepository extraIngredientRepository)
+        public GetAllExtraIngredientsQueryHandler(IMapper mapper, IRepositoryManager repositoryManager)
         {
             _mapper = mapper;
-            _extraIngredientRepository = extraIngredientRepository;
+            _repositoryManager = repositoryManager;
         }
-
 
         public async Task<GetAllExtraIngredientsResponse> Handle(GetAllExtraIngredientsRequest request, CancellationToken cancellationToken)
         {
-            var allExtraIngredients = await _extraIngredientRepository.GetAll();
+            var allExtraIngredients = await _repositoryManager.ExtraIngredient.GetAll();
 
             var responseList = _mapper.Map<IEnumerable<GetAllExtraIngredientResponseListItem>>(allExtraIngredients);
 
