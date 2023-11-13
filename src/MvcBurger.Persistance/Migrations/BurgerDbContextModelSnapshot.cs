@@ -155,7 +155,7 @@ namespace MvcBurger.Persistance.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MvcBurger.Domain.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("MvcBurger.Domain.Entities.AppUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -275,6 +275,10 @@ namespace MvcBurger.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -287,28 +291,13 @@ namespace MvcBurger.Persistance.Migrations
                     b.ToTable("Menus");
                 });
 
-            modelBuilder.Entity("MvcBurger.Domain.Entities.MenuOrderExtraIngredient", b =>
-                {
-                    b.Property<Guid>("ExtraIngredientId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("MenuOrderId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ExtraIngredientId", "MenuOrderId");
-
-                    b.HasIndex("MenuOrderId");
-
-                    b.ToTable("MenuOrderExtraIngredient");
-                });
-
             modelBuilder.Entity("MvcBurger.Domain.Entities.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ApplicationUserId")
+                    b.Property<string>("AppUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -320,7 +309,7 @@ namespace MvcBurger.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Orders");
                 });
@@ -352,6 +341,21 @@ namespace MvcBurger.Persistance.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("MvcBurger.Domain.Entities.OrderItemExtraIngredient", b =>
+                {
+                    b.Property<Guid>("ExtraIngredientId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OrderItemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ExtraIngredientId", "OrderItemId");
+
+                    b.HasIndex("OrderItemId");
+
+                    b.ToTable("OrderItemExtraIngredients");
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.Sauce", b =>
@@ -395,7 +399,7 @@ namespace MvcBurger.Persistance.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("MvcBurger.Domain.Entities.ApplicationUser", null)
+                    b.HasOne("MvcBurger.Domain.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -404,7 +408,7 @@ namespace MvcBurger.Persistance.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("MvcBurger.Domain.Entities.ApplicationUser", null)
+                    b.HasOne("MvcBurger.Domain.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -419,7 +423,7 @@ namespace MvcBurger.Persistance.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MvcBurger.Domain.Entities.ApplicationUser", null)
+                    b.HasOne("MvcBurger.Domain.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -428,53 +432,34 @@ namespace MvcBurger.Persistance.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("MvcBurger.Domain.Entities.ApplicationUser", null)
+                    b.HasOne("MvcBurger.Domain.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MvcBurger.Domain.Entities.MenuOrderExtraIngredient", b =>
-                {
-                    b.HasOne("MvcBurger.Domain.Entities.ExtraIngredient", "ExtraIngredient")
-                        .WithMany("MenuOrderExtraIngredient")
-                        .HasForeignKey("ExtraIngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MvcBurger.Domain.Entities.OrderItem", "MenuOrder")
-                        .WithMany("MenuOrderExtraIngredient")
-                        .HasForeignKey("MenuOrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ExtraIngredient");
-
-                    b.Navigation("MenuOrder");
-                });
-
             modelBuilder.Entity("MvcBurger.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("MvcBurger.Domain.Entities.ApplicationUser", "ApplicationUser")
+                    b.HasOne("MvcBurger.Domain.Entities.AppUser", "AppUser")
                         .WithMany("Orders")
-                        .HasForeignKey("ApplicationUserId")
+                        .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ApplicationUser");
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.OrderItem", b =>
                 {
                     b.HasOne("MvcBurger.Domain.Entities.Drink", "Drink")
-                        .WithMany("MenuOrder")
+                        .WithMany("OrderItem")
                         .HasForeignKey("DrinkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MvcBurger.Domain.Entities.Menu", "Menu")
-                        .WithMany("MenuOrder")
+                        .WithMany("OrderItem")
                         .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -490,6 +475,25 @@ namespace MvcBurger.Persistance.Migrations
                     b.Navigation("Menu");
 
                     b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("MvcBurger.Domain.Entities.OrderItemExtraIngredient", b =>
+                {
+                    b.HasOne("MvcBurger.Domain.Entities.ExtraIngredient", "ExtraIngredient")
+                        .WithMany("OrderItemExtraIngredient")
+                        .HasForeignKey("ExtraIngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MvcBurger.Domain.Entities.OrderItem", "OrderItem")
+                        .WithMany("OrderItemExtraIngredient")
+                        .HasForeignKey("OrderItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ExtraIngredient");
+
+                    b.Navigation("OrderItem");
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.SauceOrder", b =>
@@ -511,24 +515,24 @@ namespace MvcBurger.Persistance.Migrations
                     b.Navigation("Sauce");
                 });
 
-            modelBuilder.Entity("MvcBurger.Domain.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("MvcBurger.Domain.Entities.AppUser", b =>
                 {
                     b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.Drink", b =>
                 {
-                    b.Navigation("MenuOrder");
+                    b.Navigation("OrderItem");
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.ExtraIngredient", b =>
                 {
-                    b.Navigation("MenuOrderExtraIngredient");
+                    b.Navigation("OrderItemExtraIngredient");
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.Menu", b =>
                 {
-                    b.Navigation("MenuOrder");
+                    b.Navigation("OrderItem");
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.Order", b =>
@@ -540,7 +544,7 @@ namespace MvcBurger.Persistance.Migrations
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.OrderItem", b =>
                 {
-                    b.Navigation("MenuOrderExtraIngredient");
+                    b.Navigation("OrderItemExtraIngredient");
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.Sauce", b =>

@@ -83,7 +83,8 @@ namespace MvcBurger.Persistance.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -215,14 +216,14 @@ namespace MvcBurger.Persistance.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OrderStatus = table.Column<int>(type: "int", nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
+                        name: "FK_Orders_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -286,24 +287,24 @@ namespace MvcBurger.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MenuOrderExtraIngredient",
+                name: "OrderItemExtraIngredients",
                 columns: table => new
                 {
-                    MenuOrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OrderItemId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ExtraIngredientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MenuOrderExtraIngredient", x => new { x.ExtraIngredientId, x.MenuOrderId });
+                    table.PrimaryKey("PK_OrderItemExtraIngredients", x => new { x.ExtraIngredientId, x.OrderItemId });
                     table.ForeignKey(
-                        name: "FK_MenuOrderExtraIngredient_ExtraIngredients_ExtraIngredientId",
+                        name: "FK_OrderItemExtraIngredients_ExtraIngredients_ExtraIngredientId",
                         column: x => x.ExtraIngredientId,
                         principalTable: "ExtraIngredients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MenuOrderExtraIngredient_OrderItems_MenuOrderId",
-                        column: x => x.MenuOrderId,
+                        name: "FK_OrderItemExtraIngredients_OrderItems_OrderItemId",
+                        column: x => x.OrderItemId,
                         principalTable: "OrderItems",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -349,9 +350,9 @@ namespace MvcBurger.Persistance.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MenuOrderExtraIngredient_MenuOrderId",
-                table: "MenuOrderExtraIngredient",
-                column: "MenuOrderId");
+                name: "IX_OrderItemExtraIngredients_OrderItemId",
+                table: "OrderItemExtraIngredients",
+                column: "OrderItemId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_DrinkId",
@@ -369,9 +370,9 @@ namespace MvcBurger.Persistance.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_ApplicationUserId",
+                name: "IX_Orders_AppUserId",
                 table: "Orders",
-                column: "ApplicationUserId");
+                column: "AppUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SauceOrders_OrderId",
@@ -397,7 +398,7 @@ namespace MvcBurger.Persistance.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "MenuOrderExtraIngredient");
+                name: "OrderItemExtraIngredients");
 
             migrationBuilder.DropTable(
                 name: "SauceOrders");
