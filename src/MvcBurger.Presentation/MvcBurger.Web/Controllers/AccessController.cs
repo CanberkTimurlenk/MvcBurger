@@ -42,10 +42,10 @@ namespace MvcBurger.Web.Controllers
                 return View();
             }
 
-            if (loginResponse.Succeeded)
+            if (loginResponse.UserId is not null)
             {
                 
-                return RedirectToAction("Index", "Home",);
+                return RedirectToAction("Index", "Home");
             }
             else
                 return View(loginVM);

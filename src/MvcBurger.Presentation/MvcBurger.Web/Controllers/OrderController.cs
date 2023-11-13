@@ -17,9 +17,10 @@ namespace MvcBurger.Web.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> UserOrder(string username)
+        public async Task<IActionResult> UserOrder(string userId)
         {
-            GetCartByUserIdRequest request = new GetCartByUserIdRequest() { AppUserId = id.ToString() };
+
+            GetCartByUserIdRequest request = new GetCartByUserIdRequest() { AppUserId = userId };
             
             var response = await _mediator.Send(request);
             GetUserCartVM vm = new GetUserCartVM()
