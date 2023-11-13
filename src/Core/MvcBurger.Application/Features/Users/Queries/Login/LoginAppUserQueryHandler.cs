@@ -18,7 +18,7 @@ namespace MvcBurger.Application.Features.Users.Queries.Login
         {
             var result = await _authService.LoginAsync(request.Email, request.Password);
 
-            return new LoginAppUserResponse { Succeeded = result };
+            return new LoginAppUserResponse { UserId = result };
 
         }
     }

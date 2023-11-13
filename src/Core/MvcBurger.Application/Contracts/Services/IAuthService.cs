@@ -2,7 +2,8 @@
 {
     public interface IAuthService
     {
-        public Task<bool> LoginAsync(string email, string password);
+        Task<string> LoginAsync(string email, string password);
+        Task Logout();
 
     }
 }

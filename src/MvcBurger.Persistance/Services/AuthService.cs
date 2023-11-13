@@ -18,7 +18,7 @@ namespace MvcBurger.Persistance.Services
             _signInManager = signInManager;
         }
 
-        public async Task<bool> LoginAsync(string email, string password)
+        public async Task<string> LoginAsync(string email, string password)
         {
             AppUser user = await _userManager.FindByEmailAsync(email);
 
@@ -30,11 +30,16 @@ namespace MvcBurger.Persistance.Services
 
 
             if (result.Succeeded)
-                return true;
+                return user.Id;
 
 
 
             throw new UserAuthenticationException(email);
+        }
+
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();
         }
 
     }

@@ -24,7 +24,7 @@ namespace MvcBurger.Persistance
 
             services.AddDbContext<BurgerDbContext>();
 
-            services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<IRepositoryManager, RepositoryManager>();            
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<IExtraIngredientRepository, ExtraIngredientRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
