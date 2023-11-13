@@ -15,9 +15,11 @@ namespace MvcBurger.Domain.Entities
         public Guid DrinkId { get; set; }
         public Drink Drink { get; set; }
 
+        public int Amount { get; set; } = 1;
+
         public Size Size { get; set; }
 
-        public ICollection<OrderItemExtraIngredient> MenuOrderExtraIngredient { get; set; }
+        public ICollection<OrderItemExtraIngredient> OrderItemExtraIngredient { get; set; }
     }
 
 }
