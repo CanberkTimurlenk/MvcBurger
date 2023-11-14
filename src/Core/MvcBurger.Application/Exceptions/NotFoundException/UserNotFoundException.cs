@@ -1,6 +1,6 @@
 ﻿namespace MvcBurger.Application.Exceptions.NotFoundException
 {
-    public sealed class UserNotFoundException : NotFoundException
+    public sealed class UserNotFoundException : NotFoundException, ICustomException
     {
         public UserNotFoundException(string email)
             : base($"User with email: {email} was not found.")
