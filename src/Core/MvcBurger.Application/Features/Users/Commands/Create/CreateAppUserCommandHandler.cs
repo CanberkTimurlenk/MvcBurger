@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
-using MvcBurger.Application.Contracts.Services;
+using MvcBurger.Application.Contracts.Services.UserService;
 
-namespace ConsoleApplication.NewFolder
+namespace MvcBurger.Application.Features.Users.Commands.Create
 {
     public class CreateAppUserCommandHandler : IRequestHandler<CreateAppUserRequest, CreateAppUserResponse>
     {
