@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\Core\MvcBurger.Application\MvcBurger.Application.csproj" />
     <ProjectReference Include="..\..\MvcBurger.Persistance\MvcBurger.Persistance.csproj" />    
     
+    
   </ItemGroup>
 
 </Project>
