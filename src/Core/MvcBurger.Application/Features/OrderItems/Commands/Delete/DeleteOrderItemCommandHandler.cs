@@ -21,7 +21,8 @@ namespace MvcBurger.Application.Features.Commands.Drinks.Create
         public async Task<DeleteOrderItemResponse> Handle(DeleteOrderItemRequest request, CancellationToken cancellationToken)
         {
             _repositoryManager.OrderItemExtraIngredient.RemoveByOrderItemId(request.OrderItemId);
-            await _repositoryManager.OrderItem.RemoveAsync(request.OrderItemId);
+            await _repositoryManager.OrderItem.RemoveByIdAsync(request.OrderItemId);
+            await _repositoryManager.SaveAsync();
 
             return new DeleteOrderItemResponse { RowsAffected = await _repositoryManager.SaveAsync() };
 

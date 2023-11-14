@@ -2,7 +2,7 @@
 using MvcBurger.Application.Features.Commands.Drinks.Create;
 using MvcBurger.Domain.Entities;
 
-namespace MvcBurger.Application.Features.MenuOrderExtraIngredients.Commands.Profiles
+namespace MvcBurger.Application.Features.OrderItemExtraIngredients.Profiles
 {
     public class MappingProfiles : Profile
     {

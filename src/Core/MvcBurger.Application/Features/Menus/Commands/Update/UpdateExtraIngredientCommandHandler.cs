@@ -23,7 +23,7 @@ namespace MvcBurger.Application.Features.Menus.Commands.Update
         {
             _mapper.Map<UpdateMenuRequest, ExtraIngredient>(request);
 
-            var menu = await _repositoryManager.Menu.FindAsync(request.MenuId);
+            var menu = await _repositoryManager.Menu.FindAsync(request.Id);
 
             _mapper.Map(request, menu);
             await _repositoryManager.SaveAsync();

@@ -5,7 +5,7 @@ namespace MvcBurger.Application.Features.Drinks.Commands.Delete
 {
     public class DeleteDrinkRequest : IRequest<DeleteDrinkResponse>
     {
-        public Guid ExtraIngredientId { get; set; }
+        public Guid DrinkId { get; set; }
 
     }
 }
