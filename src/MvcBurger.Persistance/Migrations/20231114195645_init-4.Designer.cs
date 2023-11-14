@@ -12,8 +12,8 @@ using MvcBurger.Persistance.Contexts;
 namespace MvcBurger.Persistance.Migrations
 {
     [DbContext(typeof(BurgerDbContext))]
-    [Migration("20231113174842_init")]
-    partial class init
+    [Migration("20231114195645_init-4")]
+    partial class init4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

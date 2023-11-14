@@ -1,4 +1,5 @@
 ﻿@using MvcBurger.Web.Models.VMs;
+@using Newtonsoft.Json;
 @model GetMenuListVM
 
 @{
@@ -23,7 +24,7 @@
                 <div class="content">
                     <h3>@item.Name</h3>
                     <div class="price">$@item.Price</div>
-                    <a asp-action="UserOrder" asp-controller="Order" class="btn">add to cart</a>
+                    <a asp-action="OrderDetail" asp-controller="Order" asp-route-id="@item.Id" asp-route-loginVM="@JsonConvert.SerializeObject(Model)" class="btn">add to cart</a>
                 </div>
             </div>
             delay += 150;

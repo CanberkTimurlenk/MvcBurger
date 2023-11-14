@@ -1,5 +1,8 @@
-﻿using System.Text.Json;
+﻿using System.Net;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 using MvcBurger.Application.CrossCuttingConcerns.Logging;
+using MvcBurger.Application.Exceptions;
 using MvcBurger.Web.Models;
 using Serilog;
 
@@ -29,15 +32,15 @@ namespace MvcBurger.Web.Middlewares
 
             catch (Exception exception)
             {
-                var exceptionMessages = AddErrorMessagesToContext(context, exception);
+                var exceptionMessages = CreateErrorMessage(context, exception);
 
-                await LogException(context, exception, exceptionMessages);
+                await LogException(context, exceptionMessages);
 
-                await HandleExceptionAsync(context);
+                await HandleExceptionAsync(context, exceptionMessages);
             }
         }
 
-        private IEnumerable<string> AddErrorMessagesToContext(HttpContext context, Exception exception)
+        private IEnumerable<string> CreateErrorMessage(HttpContext context, Exception exception)
         {
             string routeWhereExceptionOccurred = context.Request.Path;
 
@@ -48,26 +51,27 @@ namespace MvcBurger.Web.Middlewares
                 Path = path,
             };
 
-            if (exception is AggregateException ae)
+            if (exception is not ICustomException)
+                result.ErrorMessages = new List<string> { "Internal Server Error" };
+            
+
+            else if (exception is AggregateException ae)
             {
                 var messages = ae.InnerExceptions.Select(e => e.Message).ToList();
                 result.ErrorMessages = messages;
-                string messagesJson = JsonSerializer.Serialize(result);
-                context.Items["ErrorMessages"] = messagesJson;
             }
 
             else
             {
                 string message = exception.Message;
                 result.ErrorMessages = new List<string> { message };
-
-                string messagesJson = JsonSerializer.Serialize(result);
-                context.Items["ErrorMessages"] = messagesJson;
             }
+
+            string messagesJson = JsonSerializer.Serialize(result);
             return result.ErrorMessages;
         }
 
-        private Task LogException(HttpContext context, Exception exception, IEnumerable<string> exceptionMessages)
+        private Task LogException(HttpContext context, IEnumerable<string> exceptionMessages)
         {
 
             LogDetailWithException logDetail = new()
@@ -79,16 +83,17 @@ namespace MvcBurger.Web.Middlewares
 
             Log.Error("Error during executing at Path: {@RequestPath}, For User: {@User}, Messages: {@Messages}", context.Request.Path.Value, logDetail.User, logDetail.ExceptionMessages);
 
+
             return Task.CompletedTask;
 
         }
 
-        private static async Task HandleExceptionAsync(HttpContext context)
+        private static async Task HandleExceptionAsync(HttpContext context, IEnumerable<string> exceptionMessages)
         {
-            string messagesAsJson = context.Items["ErrorMessages"] as string;
-            string redirectUrl = $"/Home/Error?messagesJson={messagesAsJson}";
 
-            context.Response.Redirect(redirectUrl);
+            context.Session.SetString("Errors", JsonSerializer.Serialize(exceptionMessages));
+
+            context.Response.Redirect("/home/error");
         }
     }
 }

@@ -1,0 +1,49 @@
+﻿@model MvcBurger.Web.Models.VMs.SelectedMenuVM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "_Order";
+}
+
+<div class="container">
+    <h2>@Model.Name</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-responsive" />
+        </div>
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                @using (Html.BeginForm("OrderDetail", "Order", FormMethod.Post))
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SelectedDrinkId)
+                    </dt>
+                    <dd>
+                        @Html.DropDownListFor(model => model.SelectedDrinkId,
+                    new SelectList(Model.Drinks, "Id", "Name"),
+                    "-- Select Drink --",
+                    new { @class = "form-control" })
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SelectedExtraIngredientId)
+                    </dt>
+                    <dd>
+                        @Html.DropDownListFor(model => model.SelectedExtraIngredientId,
+                    new SelectList(Model.ExtraIngredients, "Id", "Name"),
+                    "-- Select Extra Ingredient --",
+                    new { @class = "form-control" })
+                    </dd>
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                }
+                <!-- Diğer özellikler için benzer şekilde devam edebilirsiniz -->
+            </dl>
+        </div>
+    </div>

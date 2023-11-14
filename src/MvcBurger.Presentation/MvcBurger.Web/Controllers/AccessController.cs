@@ -1,8 +1,9 @@
-﻿using ConsoleApplication.NewFolder;
+﻿
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
 using MvcBurger.Application.Exceptions.BadRequestException;
+using MvcBurger.Application.Features.Users.Commands.Create;
 using MvcBurger.Application.Features.Users.Queries.Login;
 using MvcBurger.Application.Features.Users.Queries.Logout;
 using MvcBurger.Domain.Entities;
@@ -36,7 +37,9 @@ namespace MvcBurger.Web.Controllers
             try
             {
                 loginResponse = await _mediator.Send(request);
+                HttpContext.Session.SetString("userId", loginResponse.UserId);
 
+                //HttpContext.Session.GetString("userId")
             }
             catch (Exception)
             {
@@ -45,14 +48,15 @@ namespace MvcBurger.Web.Controllers
 
             if (loginResponse.UserId is not null)
             {
-                if (!string.IsNullOrEmpty(ReturnUrl))
-                {
-                    return LocalRedirect(ReturnUrl);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+
+                //if (!string.IsNullOrEmpty(ReturnUrl))
+                //{
+                //    return LocalRedirect(ReturnUrl);
+                //}
+                //else
+                //{
+                return RedirectToAction("Index", "Home");
+                //}
             }
             else
                 return View(loginVM);

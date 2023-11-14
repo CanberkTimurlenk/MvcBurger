@@ -4,6 +4,7 @@ using MvcBurger.Application.Features.Menus.Queries.GetAll;
 using MvcBurger.Persistance.Contexts;
 using MvcBurger.Web.Models;
 using MvcBurger.Web.Models.VMs;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace MvcBurger.Web.Controllers
@@ -16,14 +17,13 @@ namespace MvcBurger.Web.Controllers
         {
             _mediator = mediator;
         }
-        
+
         public async Task<IActionResult> Index()
         {
 
             var getAllMenusRequest = new GetAllMenusRequest() { };
 
             var allMenus = await _mediator.Send(getAllMenusRequest);
-
 
             return View(new GetMenuListVM { MenuList = allMenus.List });
         }
@@ -33,10 +33,14 @@ namespace MvcBurger.Web.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+
+        public IActionResult Error(string errors = "")
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var err = JsonConvert.DeserializeObject<List<string>>(HttpContext.Session.GetString("Errors"));
+
+            var errorMessages = string.Join(Environment.NewLine, err);
+
+            return Content(errorMessages);
         }
     }
 }

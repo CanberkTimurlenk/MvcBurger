@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
 
+builder.Services.AddSession();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddIdentity<AppUser, IdentityRole>(
     option =>
@@ -24,6 +26,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(
         option.Password.RequireLowercase = false;
         option.Password.RequireDigit = false;
     }).AddEntityFrameworkStores<BurgerDbContext>();
+
 
 builder.Services.ConfigureApplicationCookie(option =>
 {
@@ -47,6 +50,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSession();
+
 app.UseRouting();
 
 app.UseAuthentication();
@@ -57,4 +62,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-       
+

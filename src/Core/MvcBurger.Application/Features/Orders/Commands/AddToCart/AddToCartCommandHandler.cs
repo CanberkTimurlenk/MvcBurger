@@ -61,7 +61,6 @@ namespace MvcBurger.Application.Features.Orders.Commands.AddToCart
                     };
 
                     await _repositoryManager.OrderItem.AddAsync(orderItem);
-                    await _repositoryManager.SaveAsync();
                 }
             }
             await _repositoryManager.SaveAsync();
