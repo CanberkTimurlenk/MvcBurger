@@ -1,6 +1,6 @@
 ﻿namespace MvcBurger.Application.Exceptions.NotFoundException
 {
-    public class NotFoundException : Exception
+    public abstract class NotFoundException : Exception
     {
         public NotFoundException(string message)
             : base(message)

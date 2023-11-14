@@ -18,8 +18,9 @@ namespace MvcBurger.Application.Contracts.Repositories.Common
         public Task AddRangeAsync(IEnumerable<TEntity> entities);
         public Task AddAsync(TEntity entity);
         public void RemoveRange(IEnumerable<TEntity> entities);
-        public Task RemoveAsync(Guid id);
-        public void UpdateAsync(TEntity entity);
+        public Task RemoveByIdAsync(Guid id);
+        public void Remove(TEntity entity);
+        public void Update(TEntity entity);
 
 
     }

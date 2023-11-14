@@ -68,7 +68,7 @@ namespace MvcBurger.Persistance.Repositories.Common
             Table.RemoveRange(entities);
         }
 
-        public async Task RemoveAsync(Guid id)
+        public async Task RemoveByIdAsync(Guid id)
         {
             var entity = await FindAsync(id);
 
@@ -77,7 +77,12 @@ namespace MvcBurger.Persistance.Repositories.Common
 
         }
 
-        public void UpdateAsync(TEntity entity)
+        public void Remove(TEntity id)
+        {
+            Table.Remove(id);
+        }
+
+        public void Update(TEntity entity)
         {
             Table.Update(entity);
 

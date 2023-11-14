@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿    using AutoMapper;
 using MvcBurger.Application.Features.Commands.Menus.Create;
 using MvcBurger.Application.Features.Menus.Queries.GetAll;
 using MvcBurger.Application.Features.Menus.Queries.GetById;

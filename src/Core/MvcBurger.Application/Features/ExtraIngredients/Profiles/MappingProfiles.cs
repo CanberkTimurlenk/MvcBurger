@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using MvcBurger.Application.Features.Commands.Drinks.Create;
+using MvcBurger.Application.Features.ExtraIngredients.Commands.Update;
 using MvcBurger.Application.Features.ExtraIngredients.Queries.GetAll;
+using MvcBurger.Application.Features.Menus.Commands.Update;
 using MvcBurger.Application.Features.Menus.Queries.GetAll;
 using MvcBurger.Application.Features.Menus.Queries.GetById;
 using MvcBurger.Application.Features.Queries.ExtraIngredients.GetById;
@@ -19,6 +21,9 @@ namespace MvcBurger.Application.Features.ExtraIngredients.Profiles
 
             CreateMap<ExtraIngredient, GetByIdExtraIngredientRequest>().ReverseMap();
             CreateMap<ExtraIngredient, GetByIdExtraIngredientResponse>().ReverseMap();
+
+            CreateMap<ExtraIngredient, UpdateExtraIngredientRequest>().ReverseMap();
+            CreateMap<ExtraIngredient, UpdateExtraIngredientResponse>().ReverseMap();
 
 
         }

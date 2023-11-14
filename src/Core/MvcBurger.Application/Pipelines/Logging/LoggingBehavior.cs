@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-
 using MvcBurger.Application.CrossCuttingConcerns.Logging;
 using MvcBurger.Application.CrossCuttingConcerns.Logging.Serilog;
 using System.Text.Json;
@@ -14,10 +13,10 @@ namespace MvcBurger.Application.Pipelines.Logging
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly LoggerBase _loggerBase;
 
-        public LoggingBehavior(IHttpContextAccessor httpContextAccessor, LoggerBase loggerBase)
+        public LoggingBehavior(IHttpContextAccessor httpContextAccessor, LoggerBase loggerbase)
         {
             _httpContextAccessor = httpContextAccessor;
-            _loggerBase = loggerBase;
+            _loggerBase = loggerbase;
         }
 
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
