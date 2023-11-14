@@ -1,11 +1,7 @@
-﻿using ConsoleApplication.NewFolder;
-using Microsoft.AspNetCore.Identity;
-
-using MvcBurger.Application.DTOs.User.Create;
-using MvcBurger.Application.Exceptions.BadRequestException;
+﻿using MvcBurger.Application.DTOs.User.Create;
 using MvcBurger.Domain.Entities;
 
-namespace MvcBurger.Application.Contracts.Services
+namespace MvcBurger.Application.Contracts.Services.UserService
 {
     public interface IUserService
     {

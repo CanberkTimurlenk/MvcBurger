@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace ConsoleApplication.NewFolder
+namespace MvcBurger.Application.Features.Users.Commands.Create
 {
     public record CreateAppUserRequest : IRequest<CreateAppUserResponse>
     {

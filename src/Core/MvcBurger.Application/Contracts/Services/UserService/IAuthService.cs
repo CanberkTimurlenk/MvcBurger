@@ -1,4 +1,4 @@
-﻿namespace MvcBurger.Application.Contracts.Services
+﻿namespace MvcBurger.Application.Contracts.Services.UserService
 {
     public interface IAuthService
     {

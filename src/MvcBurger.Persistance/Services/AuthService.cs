@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
-using MvcBurger.Application.Contracts.Services;
+using MvcBurger.Application.Contracts.Services.UserService;
 using MvcBurger.Application.Exceptions.NotFoundException;
 using MvcBurger.Application.Exceptions.UnauthorizedException;
 using MvcBurger.Domain.Entities;

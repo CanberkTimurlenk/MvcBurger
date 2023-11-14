@@ -13,6 +13,7 @@ using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Persistance.Repositories.RepositoryManager;
 using MvcBurger.Application.Contracts.Services;
 using MvcBurger.Persistance.Services;
+using MvcBurger.Application.Contracts.Services.UserService;
 
 namespace MvcBurger.Persistance
 {
