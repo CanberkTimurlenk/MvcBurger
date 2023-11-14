@@ -304,7 +304,7 @@ namespace MvcBurger.Persistance.Migrations
                     b.Property<int>("OrderStatus")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("TotalPrice")
+                    b.Property<decimal?>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -348,13 +348,19 @@ namespace MvcBurger.Persistance.Migrations
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.OrderItemExtraIngredient", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("ExtraIngredientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("OrderItemId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ExtraIngredientId", "OrderItemId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExtraIngredientId");
 
                     b.HasIndex("OrderItemId");
 

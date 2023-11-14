@@ -49,6 +49,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
                             OrderItemExtraIngredient = oi.ExtraIngredientId.Select(
                             oi => new OrderItemExtraIngredient()
                             {
+                                Id = Guid.NewGuid(),
                                 ExtraIngredientId = oi,
                                 OrderItemId = orderItemId
 
@@ -76,6 +77,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
                         OrderItemExtraIngredient = item.ExtraIngredientId.Select(
                                                        oi => new OrderItemExtraIngredient()
                                                        {
+                                                           Id = Guid.NewGuid(),
                                                            ExtraIngredientId = oi,
                                                            OrderItemId = orderItemId
 

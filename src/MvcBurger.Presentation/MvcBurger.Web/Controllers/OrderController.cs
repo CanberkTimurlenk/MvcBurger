@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using MvcBurger.Application.Features.ExtraIngredients.Queries.GetAll;
 using MvcBurger.Application.Features.Menus.Queries.GetById;
-using MvcBurger.Application.Features.Orders.Commands.AddToCart;
+using MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart;
+using MvcBurger.Application.Features.Orders.Commands.Cart.Common;
 using MvcBurger.Application.Features.Orders.Queries.GetCartByUserId;
 using MvcBurger.Application.Features.Queries.Drinks.GetAll;
 using MvcBurger.Web.Models.VMs;
-using Newtonsoft.Json;
+using NuGet.Protocol;
 using System.Drawing.Printing;
+using System.Text.Json;
 
 namespace MvcBurger.Web.Controllers
 {
@@ -43,6 +45,8 @@ namespace MvcBurger.Web.Controllers
 
             return View();
         }
+        [Route("od/product-{id}")]
+        [HttpGet]
         public async Task<IActionResult> OrderDetail(Guid Id)
         {
             GetByIdMenuRequest menuRequest = new GetByIdMenuRequest() { Id = Id };
@@ -61,34 +65,59 @@ namespace MvcBurger.Web.Controllers
             };
             selected.ExtraIngredients = ingredientsResponse.List;
             selected.Drinks = drinksResponse.List;
+            //tempdata ile tasimak icin boyutu mu buyuk acaba????
+            //TempData["selectedvm"]= selected;
+
+            string js = JsonSerializer.Serialize(selected);
+
+            TempData["selectedMenu"] = js;
+
             return View(selected);
         }
+        [Route("od/product-{id}")]
         [HttpPost]
         public async Task<IActionResult> OrderDetail(SelectedMenuVM selected)
         {
+            //duzenleme yapilmasi gerek (belki vm yerine tempdata kullanilabilir)
+            var selectedTemp = JsonSerializer.Deserialize<SelectedMenuVM>(TempData["selectedMenu"] as string);
+            //
             OrderItemRequest orderItemRequest = new OrderItemRequest()
             {
+
                 DrinkId = selected.SelectedDrinkId,
-                MenuId = selected.MenuId,                
-                // menuId gelmiyorrr
-                //Amount = selected.Amount,
-                //Size = selected.Size
+                MenuId = selectedTemp.MenuId,
+                ExtraIngredientId = new List<Guid>
+                {
+                    new Guid("f0603b28-71fe-4d67-b2e0-ab25c16411f2"),
+                    new Guid("f0603b28-71fe-4d67-b2e0-ab25c16411f2"),
+
+                }
             };
+            // menuId gelmiyorrr
+
+            //Amount = selected.Amount,
+            //Size = selected.Size
 
             IEnumerable<OrderItemRequest> orderItems = new List<OrderItemRequest>() { orderItemRequest }.AsEnumerable();
 
-            AddToCartRequest addToCartRequest = new AddToCartRequest() { AppUserId = HttpContext.Session.GetString("userId"), OrderItemRequest = orderItems };
+            AddToCartRequest addToCartRequest = new AddToCartRequest()
+            {
+                AppUserId = HttpContext.Session.GetString("userId"),
+                OrderItemRequest = orderItems
+
+            };
 
             var response = await _mediator.Send(addToCartRequest);
 
             GetUserCartVM userCartVM = new GetUserCartVM() { Cart = response.Cart };
 
-            return RedirectToAction("Cart",userCartVM);
+            return RedirectToAction("Cart", userCartVM);
         }
-
-        //public IActionResult Cart()
-        //{
-
-        //}
     }
+
+    //public IActionResult Cart()
+    //{
+
+    //}
 }
+

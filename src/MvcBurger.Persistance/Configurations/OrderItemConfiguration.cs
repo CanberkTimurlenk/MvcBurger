@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MvcBurger.Domain.Entities;
-using System.Reflection.Emit;
 
 namespace MvcBurger.Persistance.Configurations
 {
@@ -9,8 +8,7 @@ namespace MvcBurger.Persistance.Configurations
     {
         public void Configure(EntityTypeBuilder<OrderItem> builder)
         {
-            builder
-                .HasKey(mo => new { mo.Id });
+            builder.HasKey(moei => moei.Id);
 
             builder
                 .HasOne(mo => mo.Menu)

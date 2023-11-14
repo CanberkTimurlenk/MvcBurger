@@ -2,7 +2,7 @@
 {
     public class CartDto
     {
-        public decimal TotalPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
         public IEnumerable<CartItemDto> CartItems { get; set; }
     }
 }
