@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using MvcBurger.Application.Contracts.Services;
+using MvcBurger.Application.Contracts.Services.UserService;
 using MvcBurger.Application.DTOs.User.Create;
 using MvcBurger.Application.Exceptions.BadRequestException;
 using MvcBurger.Domain.Entities;

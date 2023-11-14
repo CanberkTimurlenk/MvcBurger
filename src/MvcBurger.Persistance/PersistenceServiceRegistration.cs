@@ -11,9 +11,9 @@ using MvcBurger.Application.Contracts.Repositories.OrderItems;
 using MvcBurger.Application.Contracts.Repositories.Drinks;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Persistance.Repositories.RepositoryManager;
-using MvcBurger.Application.Contracts.Services;
 using System.Net;
 using MvcBurger.Persistance.Services;
+using MvcBurger.Application.Contracts.Services.UserService;
 
 namespace MvcBurger.Persistance
 {
@@ -36,9 +36,8 @@ namespace MvcBurger.Persistance
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<ISauceRepository, SauceRepository>();
 
-            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
-
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }

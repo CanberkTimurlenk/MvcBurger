@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MvcBurger.Application.Pipelines.Logging;
 using System.Reflection;
 
 namespace MvcBurger.Application
@@ -10,11 +11,12 @@ namespace MvcBurger.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             //services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
-            
+
 
             services.AddMediatR(configuration =>
             {
                 configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
 
                 //configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
                 //configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
