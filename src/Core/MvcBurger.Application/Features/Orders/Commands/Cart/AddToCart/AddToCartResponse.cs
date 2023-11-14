@@ -1,6 +1,6 @@
 ﻿using MvcBurger.Application.DTOs.Cart;
 
-namespace MvcBurger.Application.Features.Orders.Commands.AddToCart
+namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
 {
     public record AddToCartResponse
     {

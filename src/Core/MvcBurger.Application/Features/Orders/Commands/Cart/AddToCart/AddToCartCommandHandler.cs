@@ -4,7 +4,7 @@ using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Domain.Entities;
 using MvcBurger.Domain.Enums;
 
-namespace MvcBurger.Application.Features.Orders.Commands.AddToCart
+namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
 {
     public class AddToCartCommandHandler : IRequestHandler<AddToCartRequest, AddToCartResponse>
     {
@@ -33,15 +33,29 @@ namespace MvcBurger.Application.Features.Orders.Commands.AddToCart
                     Id = Guid.NewGuid(),
                     AppUserId = request.AppUserId,
                     OrderStatus = OrderStatus.Cart,
-                    OrderItems = request.OrderItemRequest.Select(oi => new OrderItem
+                    OrderItems = request.OrderItemRequest.Select(oi =>
                     {
-                        Id = Guid.NewGuid(),
-                        Amount = oi.Amount,
-                        DrinkId = oi.DrinkId,
-                        MenuId = oi.MenuId,
-                        Size = oi.Size,
-                        OrderId = Guid.NewGuid()
+
+                        var orderItemId = Guid.NewGuid();
+
+                        return new OrderItem
+                        {
+                            Id = orderItemId,
+                            Amount = oi.Amount,
+                            DrinkId = oi.DrinkId,
+                            MenuId = oi.MenuId,
+                            Size = oi.Size,
+                            OrderId = Guid.NewGuid(),
+                            OrderItemExtraIngredient = oi.ExtraIngredientId.Select(
+                            oi => new OrderItemExtraIngredient()
+                            {
+                                ExtraIngredientId = oi,
+                                OrderItemId = orderItemId
+
+                            }).ToList()
+                        };
                     }).ToList()
+
                 };
                 await _repositoryManager.Order.AddAsync(createdOrder);
             }
@@ -50,18 +64,25 @@ namespace MvcBurger.Application.Features.Orders.Commands.AddToCart
             {
                 foreach (var item in request.OrderItemRequest)
                 {
+                    var orderItemId = Guid.NewGuid();
                     var orderItem = new OrderItem
                     {
-                        Id = Guid.NewGuid(),
+                        Id = orderItemId,
                         Amount = item.Amount,
                         DrinkId = item.DrinkId,
                         MenuId = item.MenuId,
                         Size = item.Size,
-                        OrderId = order.Id
-                    };
+                        OrderId = order.Id,
+                        OrderItemExtraIngredient = item.ExtraIngredientId.Select(
+                                                       oi => new OrderItemExtraIngredient()
+                                                       {
+                                                           ExtraIngredientId = oi,
+                                                           OrderItemId = orderItemId
 
-                    await _repositoryManager.OrderItem.AddAsync(orderItem);
-                    await _repositoryManager.SaveAsync();
+                                                       }).ToList()
+
+                    };                                        
+                    await _repositoryManager.OrderItem.AddAsync(orderItem);                    
                 }
             }
             await _repositoryManager.SaveAsync();
