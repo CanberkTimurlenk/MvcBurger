@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
+using MvcBurger.Application.Helpers;
 using MvcBurger.Domain.Entities;
 using MvcBurger.Domain.Enums;
 
@@ -81,12 +82,15 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
 
                                                        }).ToList()
 
-                    };                                        
-                    await _repositoryManager.OrderItem.AddAsync(orderItem);                    
+                    };
+                    await _repositoryManager.OrderItem.AddAsync(orderItem);
                 }
             }
             await _repositoryManager.SaveAsync();
+
             var cart = await _repositoryManager.Order.GetCartByUserId(request.AppUserId);
+            cart.TotalPrice = CartHelper.GetTotalCartPrice(cart);
+
             return new AddToCartResponse { Cart = cart };
 
         }

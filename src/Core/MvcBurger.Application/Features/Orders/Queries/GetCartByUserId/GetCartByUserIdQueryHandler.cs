@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
+using MvcBurger.Application.DTOs.Cart;
+using MvcBurger.Application.Helpers;
 
 namespace MvcBurger.Application.Features.Orders.Queries.GetCartByUserId
 {
@@ -20,8 +22,13 @@ namespace MvcBurger.Application.Features.Orders.Queries.GetCartByUserId
         {
             var cart = await _repositoryManager.Order.GetCartByUserId(request.AppUserId);
 
+            if (cart is not null)
+                cart.TotalPrice = CartHelper.GetTotalCartPrice(cart);
+
             return new GetCartByUserIdResponse { Cart = cart };
         }
+
+
 
     }
 }

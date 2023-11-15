@@ -3,6 +3,7 @@ using MediatR;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Application.Exceptions.NotFoundException;
 using MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart;
+using MvcBurger.Application.Helpers;
 using MvcBurger.Domain.Entities;
 using MvcBurger.Domain.Enums;
 
@@ -44,6 +45,8 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
             await _repositoryManager.SaveAsync();
 
             var cart = await _repositoryManager.Order.GetCartByUserId(request.AppUserId);
+            cart.TotalPrice = CartHelper.GetTotalCartPrice(cart);
+
             return new UpdateCartItemResponse { Cart = cart };
 
         }
