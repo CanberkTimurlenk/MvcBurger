@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using MvcBurger.Application.Features.ExtraIngredients.Queries.GetAll;
 using MvcBurger.Application.Features.Queries.Drinks.GetAll;
+using MvcBurger.Domain.Entities;
 using MvcBurger.Domain.Enums;
 
 namespace MvcBurger.Web.Models.VMs
@@ -17,18 +18,19 @@ namespace MvcBurger.Web.Models.VMs
         public Guid SelectedDrinkId { get; set; }
         public Guid SelectedExtraIngredientId { get; set; }
 
-        public List<selectListBenzeri> ekstralar { get; set; }
+        public List<SelectedExtraItem> Extras { get; set; }
+        public ICollection<OrderItemExtraIngredient> SelectedExtraIngredients { get; set; }
 
-        public List<SelectListItem> Sizes { get; set; }
-        public List<GetAllExtraIngredientResponseListItem> ExtraIngredients { get; set; }
-        public List<GetAllDrinksResponseListItem> Drinks { get; set; }
+        public List<GetAllExtraIngredientResponseListItem> AllExtraIngredients { get; set; }
+        public List<GetAllDrinksResponseListItem> AllDrinks { get; set; }
     }
 
 
 
-    public class selectListBenzeri {
-        public string EkstraMalzemeAdi { get; set; }
-        public bool IstiyorMusun { get; set; }
+    public class SelectedExtraItem
+    {
+        public string ExtraName { get; set; }
+        public bool Checked { get; set; }
         public Guid SelectedIngredientId { get; set; }
     }
 }

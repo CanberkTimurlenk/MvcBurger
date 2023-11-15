@@ -3,6 +3,7 @@ using MvcBurger.Application.Contracts.Repositories.OrderItems;
 using MvcBurger.Domain.Entities;
 using MvcBurger.Persistance.Contexts;
 using MvcBurger.Persistance.Repositories.Common;
+using System.Linq.Expressions;
 
 namespace MvcBurger.Persistance.Repositories
 {
@@ -20,6 +21,17 @@ namespace MvcBurger.Persistance.Repositories
                 .Include(oi => oi.OrderItemExtraIngredient)
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
+
+
+        public new async Task<OrderItem?> GetAsync(Expression<Func<OrderItem, bool>> filter)
+        {
+            return await Table
+                .Include(oi => oi.OrderItemExtraIngredient)
+                .FirstOrDefaultAsync(filter);
+        }
+
+
+
 
 
 

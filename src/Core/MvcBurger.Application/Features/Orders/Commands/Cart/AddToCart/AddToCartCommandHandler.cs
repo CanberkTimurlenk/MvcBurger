@@ -24,7 +24,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
         {
 
 
-            var order = await _repositoryManager.Order.Get(o => o.AppUserId.Equals(request.AppUserId) && o.OrderStatus == OrderStatus.Cart);
+            var order = await _repositoryManager.Order.GetAsync(o => o.AppUserId.Equals(request.AppUserId) && o.OrderStatus == OrderStatus.Cart);
 
             if (order is null)
             {
@@ -50,7 +50,6 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
                             OrderItemExtraIngredient = oi.ExtraIngredientId?.Select(
                             oi => new OrderItemExtraIngredient()
                             {
-                                Id = Guid.NewGuid(),
                                 ExtraIngredientId = oi,
                                 OrderItemId = orderItemId
 
@@ -78,7 +77,6 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
                         OrderItemExtraIngredient = item?.ExtraIngredientId?.Select(
                                                        oi => new OrderItemExtraIngredient
                                                        {
-                                                           Id = Guid.NewGuid(),
                                                            ExtraIngredientId = oi,
                                                            OrderItemId = orderItemId
 

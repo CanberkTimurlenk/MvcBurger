@@ -12,7 +12,7 @@ using MvcBurger.Persistance.Contexts;
 namespace MvcBurger.Persistance.Migrations
 {
     [DbContext(typeof(BurgerDbContext))]
-    [Migration("20231114225600_init")]
+    [Migration("20231115180941_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -350,21 +350,15 @@ namespace MvcBurger.Persistance.Migrations
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.OrderItemExtraIngredient", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("OrderItemId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ExtraIngredientId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("OrderItemId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
+                    b.HasKey("OrderItemId", "ExtraIngredientId");
 
                     b.HasIndex("ExtraIngredientId");
-
-                    b.HasIndex("OrderItemId");
 
                     b.ToTable("OrderItemExtraIngredients");
                 });

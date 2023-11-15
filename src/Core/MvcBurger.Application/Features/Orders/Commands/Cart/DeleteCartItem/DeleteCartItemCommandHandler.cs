@@ -23,7 +23,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
         public async Task<DeleteCartItemResponse> Handle(DeleteCartItemRequest request, CancellationToken cancellationToken)
         {
 
-            var cartItemToDelete = await _repositoryManager.OrderItem.Get(o => o.Id.Equals(request.OrderItemId));
+            var cartItemToDelete = await _repositoryManager.OrderItem.FindAsync(request.OrderItemId);
 
             if (cartItemToDelete == null)
                 throw new CartItemNotFoundException(request.AppUserId, request.OrderItemId);

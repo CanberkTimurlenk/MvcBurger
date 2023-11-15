@@ -17,7 +17,7 @@ namespace MvcBurger.Application.Features.Queries.ExtraIngredients.GetById
 
         public async Task<GetByIdExtraIngredientResponse> Handle(GetByIdExtraIngredientRequest request, CancellationToken cancellationToken)
         {
-            var extraIngredient = await _repositoryManager.ExtraIngredient.Get(ei => ei.Id == request.Id);
+            var extraIngredient = await _repositoryManager.ExtraIngredient.GetAsync(ei => ei.Id == request.Id);
 
             GetByIdExtraIngredientResponse response = _mapper.Map<GetByIdExtraIngredientResponse>(extraIngredient);
 

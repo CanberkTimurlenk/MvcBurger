@@ -291,13 +291,12 @@ namespace MvcBurger.Persistance.Migrations
                 name: "OrderItemExtraIngredients",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OrderItemId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ExtraIngredientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItemExtraIngredients", x => x.Id);
+                    table.PrimaryKey("PK_OrderItemExtraIngredients", x => new { x.OrderItemId, x.ExtraIngredientId });
                     table.ForeignKey(
                         name: "FK_OrderItemExtraIngredients_ExtraIngredients_ExtraIngredientId",
                         column: x => x.ExtraIngredientId,
@@ -355,11 +354,6 @@ namespace MvcBurger.Persistance.Migrations
                 name: "IX_OrderItemExtraIngredients_ExtraIngredientId",
                 table: "OrderItemExtraIngredients",
                 column: "ExtraIngredientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderItemExtraIngredients_OrderItemId",
-                table: "OrderItemExtraIngredients",
-                column: "OrderItemId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_DrinkId",

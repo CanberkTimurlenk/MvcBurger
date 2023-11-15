@@ -28,11 +28,11 @@
         <div id="menu-btn" class="fas fa-bars icons"></div>
         <div id="search-btn" class="fas fa-search icons"></div>
         <nav class="navbar">
-            <a href="#home">home</a>
-            <a href="#menu">menu</a>
-            <a href="#about">about</a>
+            <a asp-action="Index" asp-controller="Home">home</a>
+            <a asp-action="Index" asp-controller="Home">menu</a>
+            <a asp-action="Index" asp-controller="Home">about</a>
             <span class="space"></span>
-            <a href="#contact">contact</a>
+            <a asp-action="Index" asp-controller="Home">contact</a>
         </nav>
         <div>
             <a asp-action="UserOrder" asp-controller="Order" class="fas fa-shopping-cart icons"></a>
@@ -77,12 +77,10 @@
     <section class="footer">
 
         <div class="links">
-            <a href="#home" class="btn">home</a>
-            <a href="#menu" class="btn">menu</a>
-            <a href="#about" class="btn">about</a>
-            <a href="#reviews" class="btn">reviews</a>
-            <a href="#contact" class="btn">contact</a>
-            <a href="#blogs" class="btn">blogs</a>
+            <a asp-action="Index" asp-controller="Home" class="btn">home</a>
+            <a asp-action="Index" asp-controller="Home" class="btn">menu</a>
+            <a asp-action="Index" asp-controller="Home" class="btn">about</a>
+            <a asp-action="Index" asp-controller="Home" class="btn">contact</a>
         </div>
 
         <p class="credit"> created by <span><a href="https://freewebsitecode.com/">Free Website Code</a></span> | all rights reserved! </p><br>

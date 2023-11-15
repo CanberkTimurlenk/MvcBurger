@@ -348,21 +348,15 @@ namespace MvcBurger.Persistance.Migrations
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.OrderItemExtraIngredient", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("OrderItemId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ExtraIngredientId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("OrderItemId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
+                    b.HasKey("OrderItemId", "ExtraIngredientId");
 
                     b.HasIndex("ExtraIngredientId");
-
-                    b.HasIndex("OrderItemId");
 
                     b.ToTable("OrderItemExtraIngredients");
                 });
