@@ -2,6 +2,7 @@
 using MediatR;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Application.Exceptions.NotFoundException;
+using MvcBurger.Application.Helpers;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
@@ -30,13 +31,17 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
             _repositoryManager.OrderItem.Remove(cartItemToDelete);
 
             var extraIngredientsToDelete = await _repositoryManager.OrderItemExtraIngredient.GetAll(oi => oi.OrderItemId == request.OrderItemId);
-                
+
             _repositoryManager.OrderItemExtraIngredient.RemoveRange(extraIngredientsToDelete);
 
 
             await _repositoryManager.SaveAsync();
 
             var cart = await _repositoryManager.Order.GetCartByUserId(request.AppUserId);
+
+            if (cart is not null)
+                cart.TotalPrice = CartHelper.GetTotalCartPrice(cart);
+
             return new DeleteCartItemResponse { Cart = cart };
 
         }
