@@ -33,8 +33,8 @@
             <a href="#contact">contact</a>
         </nav>
         <div>
-            <a asp-action="UserOrder" asp-controller="Order" asp-route-id="@User.Identity.Name" class="fas fa-shopping-cart icons"></a>
-            @if (!User.Identity.IsAuthenticated)
+            <a asp-action="Cart" asp-controller="Order" class="fas fa-shopping-cart icons"></a>
+            @if (!User.Identity.IsAuthenticated )
             {
                 <a asp-action="Login" asp-controller="Access" class="fas fa-login icons">Login</a>
                 <a asp-action="Register" asp-controller="Access" class="fas fa-register icons">Register</a>

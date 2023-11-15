@@ -8,9 +8,9 @@ using MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart;
 using MvcBurger.Application.Features.Orders.Commands.Cart.Common;
 using MvcBurger.Application.Features.Orders.Queries.GetCartByUserId;
 using MvcBurger.Application.Features.Queries.Drinks.GetAll;
+
 using MvcBurger.Web.Models.VMs;
-using NuGet.Protocol;
-using System.Drawing.Printing;
+
 using System.Text.Json;
 
 namespace MvcBurger.Web.Controllers
@@ -25,6 +25,7 @@ namespace MvcBurger.Web.Controllers
         {
             _mediator = mediator;
         }
+        [HttpGet]
         public async Task<IActionResult> UserOrder(UserLoginVM loginVM)
         {
 
@@ -63,10 +64,18 @@ namespace MvcBurger.Web.Controllers
                 Name = menuResponse.Name,
                 Price = menuResponse.Price
             };
-            selected.ExtraIngredients = ingredientsResponse.List;
-            selected.Drinks = drinksResponse.List;
+
+            //selected.Sizes = new SelectList(Enum.GetValues(typeof(Size)));
+            selected.ExtraIngredients = ingredientsResponse.List.ToList();
+            selected.Drinks = drinksResponse.List.ToList();
             //tempdata ile tasimak icin boyutu mu buyuk acaba????
             //TempData["selectedvm"]= selected;
+
+            selected.ekstralar = selected.ExtraIngredients.Select(ei => new selectListBenzeri
+            {
+                EkstraMalzemeAdi = ei.Name,
+                SelectedIngredientId = ei.Id,
+            }).ToList();
 
             string js = JsonSerializer.Serialize(selected);
 
@@ -78,20 +87,23 @@ namespace MvcBurger.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> OrderDetail(SelectedMenuVM selected)
         {
+
             //duzenleme yapilmasi gerek (belki vm yerine tempdata kullanilabilir)
             var selectedTemp = JsonSerializer.Deserialize<SelectedMenuVM>(TempData["selectedMenu"] as string);
-            //
+
+
+
+            var selectedExtras = selected.ekstralar.Where(e => e.IstiyorMusun).Select(e => e.SelectedIngredientId);
+
+
+
             OrderItemRequest orderItemRequest = new OrderItemRequest()
             {
-
+                Size = selected.SelectedSize,
+                Amount = selected.Amount,
                 DrinkId = selected.SelectedDrinkId,
                 MenuId = selectedTemp.MenuId,
-                ExtraIngredientId = new List<Guid>
-                {
-                    new Guid("f0603b28-71fe-4d67-b2e0-ab25c16411f2"),
-                    new Guid("f0603b28-71fe-4d67-b2e0-ab25c16411f2"),
-
-                }
+                ExtraIngredientId = selectedExtras
             };
             // menuId gelmiyorrr
 
@@ -102,7 +114,10 @@ namespace MvcBurger.Web.Controllers
 
             AddToCartRequest addToCartRequest = new AddToCartRequest()
             {
-                AppUserId = HttpContext.Session.GetString("userId"),
+                //AppUserId = HttpContext.Session.GetString("userId"),
+                AppUserId = HttpContext.User.Claims.First().Value,
+
+
                 OrderItemRequest = orderItems
 
             };
@@ -113,11 +128,23 @@ namespace MvcBurger.Web.Controllers
 
             return RedirectToAction("Cart", userCartVM);
         }
+
+        public async Task<IActionResult> Cart(GetUserCartVM userCartVM)
+        {
+            GetCartByUserIdRequest request = new GetCartByUserIdRequest() { AppUserId = HttpContext.User.Claims.First().Value };
+
+            if (userCartVM.Cart is null)
+            {
+                userCartVM.Cart = (await _mediator.Send(request)).Cart;
+                return View(userCartVM);
+            }
+
+            return View();
+        }
+
+
     }
 
-    //public IActionResult Cart()
-    //{
 
-    //}
 }
 

@@ -19,7 +19,7 @@ namespace MvcBurger.Domain.Entities
 
         public Size Size { get; set; }
 
-        public ICollection<OrderItemExtraIngredient> OrderItemExtraIngredient { get; set; }
+        public ICollection<OrderItemExtraIngredient>? OrderItemExtraIngredient { get; set; }
     }
 
 }

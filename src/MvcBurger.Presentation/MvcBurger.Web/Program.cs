@@ -33,7 +33,7 @@ builder.Services.ConfigureApplicationCookie(option =>
     //option.AccessDeniedPath = null;
     option.LoginPath = "/Access/Login";
     option.SlidingExpiration = true;
-    option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    //option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
 });
 
 
@@ -57,10 +57,6 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-//app.MapControllerRoute(
-//    name: "OrderDetail",
-//    pattern: "od",
-//    defaults: new { controller = "Order", action = "OrderDetail"});
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
