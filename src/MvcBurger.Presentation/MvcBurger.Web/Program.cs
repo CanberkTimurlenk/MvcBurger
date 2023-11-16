@@ -3,13 +3,21 @@ using MvcBurger.Application;
 using MvcBurger.Domain.Entities;
 using MvcBurger.Persistance;
 using MvcBurger.Persistance.Contexts;
+using MvcBurger.Web.Middlewares;
+using Serilog;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddPersistenceServices();
+builder.Host.UseSerilog();
+builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
 
 builder.Services.AddSession();
 
@@ -31,9 +39,10 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(
 builder.Services.ConfigureApplicationCookie(option =>
 {
     //option.AccessDeniedPath = null;
-    option.LoginPath = "/Access/Login";
+    option.LoginPath = "/u/Login";
     option.SlidingExpiration = true;
-    //option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    option.Cookie.IsEssential = true;
+    option.ExpireTimeSpan = TimeSpan.FromSeconds(10);
 });
 
 
@@ -53,13 +62,26 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.UseRouting();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Menus}/{id?}"
+    );
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+});
+
+
 
 app.Run();
 

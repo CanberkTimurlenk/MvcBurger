@@ -11,19 +11,21 @@ using MvcBurger.Application.Contracts.Repositories.OrderItems;
 using MvcBurger.Application.Contracts.Repositories.Drinks;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Persistance.Repositories.RepositoryManager;
-using MvcBurger.Application.Contracts.Services;
 using MvcBurger.Persistance.Services;
 using MvcBurger.Application.Contracts.Services.UserService;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace MvcBurger.Persistance
 {
     public static class PersistenceServiceRegistration
     {
 
-        public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
+        public static IServiceCollection AddPersistenceServices(this IServiceCollection services,IConfiguration configuration)
         {
 
-            services.AddDbContext<BurgerDbContext>();
+            services.AddDbContext<BurgerDbContext>(options => 
+            options.UseSqlServer(configuration.GetConnectionString("SqlServerConn")));
 
             services.AddScoped<IRepositoryManager, RepositoryManager>();            
             services.AddScoped<IMenuRepository, MenuRepository>();

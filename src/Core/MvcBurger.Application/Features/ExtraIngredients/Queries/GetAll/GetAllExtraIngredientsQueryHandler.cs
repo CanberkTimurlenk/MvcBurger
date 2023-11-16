@@ -17,7 +17,7 @@ namespace MvcBurger.Application.Features.ExtraIngredients.Queries.GetAll
 
         public async Task<GetAllExtraIngredientsResponse> Handle(GetAllExtraIngredientsRequest request, CancellationToken cancellationToken)
         {
-            var allExtraIngredients = await _repositoryManager.ExtraIngredient.GetAll();
+            var allExtraIngredients = await _repositoryManager.ExtraIngredient.GetAllAsync();
 
             var responseList = _mapper.Map<IEnumerable<GetAllExtraIngredientResponseListItem>>(allExtraIngredients);
 

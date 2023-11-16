@@ -32,7 +32,7 @@ namespace MvcBurger.Persistance.Repositories.Common
 
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null)
         {
             if (filter == null)
                 return await Table.ToListAsync();

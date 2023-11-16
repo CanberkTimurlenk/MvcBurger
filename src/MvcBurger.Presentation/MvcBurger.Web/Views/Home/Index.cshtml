@@ -24,7 +24,7 @@
                 <div class="content">
                     <h3>@item.Name</h3>
                     <div class="price">$@item.Price</div>
-                    <a asp-action="OrderDetail" asp-controller="Order" asp-route-id="@item.Id" class="btn">add to cart</a>
+                    <a asp-action="CreateOrder" asp-controller="Order" asp-route-id="@item.Id" class="btn">add to cart</a>
                 </div>
             </div>
             delay += 150;

@@ -15,7 +15,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.25" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.7.4" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +28,12 @@
     <ProjectReference Include="..\..\MvcBurger.Persistance\MvcBurger.Persistance.csproj" />    
     
     
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="wwwroot\panel\assets\images\background\" />
+    <Folder Include="wwwroot\panel\assets\images\users\" />
   </ItemGroup>
 
 </Project>

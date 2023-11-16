@@ -21,8 +21,6 @@ namespace MvcBurger.Application.Features.Menus.Commands.Update
 
         public async Task<UpdateMenuResponse> Handle(UpdateMenuRequest request, CancellationToken cancellationToken)
         {
-            _mapper.Map<UpdateMenuRequest, ExtraIngredient>(request);
-
             var menu = await _repositoryManager.Menu.FindAsync(request.Id);
 
             _mapper.Map(request, menu);

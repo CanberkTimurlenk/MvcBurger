@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.Cart?.CartItems != null)
+            @if (Model?.Cart?.CartItems != null)
             {
                 @foreach (var cartItem in Model.Cart.CartItems)
                 {
@@ -27,8 +27,8 @@
                     <td class="text-white">@cartItem.Amount"</td>
                     <td class="text-white">@(cartItem.Menu.Price * cartItem.Amount)</td>
                         <td>
-                        <a type="button" class="btn btn-primary" asp-action="Update" asp-controller="Order" asp-route-id="@cartItem.Id">Update</a>
-                        <a type="button" class="btn btn-danger" asp-action="Remove" asp-controller="Order" asp-route-id="@cartItem.Id">Remove</a>
+                        <a type="button" class="btn btn-primary" asp-action="UpdateCartItem" asp-controller="Order" asp-route-id="@cartItem.Id">Update</a>
+                        <a type="button" class="btn btn-danger" asp-action="RemoveCartItem" asp-controller="Order" asp-route-id="@cartItem.Id">Remove</a>
                         </td>
                     </tr>
                 }
@@ -37,15 +37,15 @@
             else
             {
                 <tr>
-                    <td>Henuz Menu Secmediniz</td>
+                    <td>You have not selected any item yet</td>
                 </tr>
             }
         </tbody>
     </table>
 
     <div class="text-right">
-    <h4 class="text-white">Total: @Model.Cart?.TotalPrice.ToString()</h4>
-        <a type="button" class="btn btn-success">Checkout</a>
+    <h4 class="text-white">Total: @Model?.Cart?.TotalPrice.ToString()</h4>
+        <a asp-action="Checkout" type="button" class="btn btn-success">Checkout</a>
     </div>
 
 

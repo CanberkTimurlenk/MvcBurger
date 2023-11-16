@@ -1,11 +1,15 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using MvcBurger.Application.Features.Menus.Queries.GetAll;
 using MvcBurger.Persistance.Contexts;
 using MvcBurger.Web.Models;
 using MvcBurger.Web.Models.VMs;
 using Newtonsoft.Json;
+using NuGet.Protocol.Plugins;
+using System.Collections;
 using System.Diagnostics;
+using System.Text;
 
 namespace MvcBurger.Web.Controllers
 {
@@ -20,10 +24,11 @@ namespace MvcBurger.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var roles = HttpContext.Session.GetString("roles");
+            if (roles is not null && roles.Contains("Admin"))
+                return RedirectToAction("Menus", "Home", new { area = "Admin" });
 
-            var getAllMenusRequest = new GetAllMenusRequest() { };
-
-            var allMenus = await _mediator.Send(getAllMenusRequest);
+            var allMenus = await _mediator.Send(new GetAllMenusRequest());
 
             return View(new GetMenuListVM { MenuList = allMenus.List });
         }

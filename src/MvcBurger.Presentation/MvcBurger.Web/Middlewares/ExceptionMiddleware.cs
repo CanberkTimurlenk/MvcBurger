@@ -36,7 +36,7 @@ namespace MvcBurger.Web.Middlewares
 
                 await LogException(context, exceptionMessages);
 
-                await HandleExceptionAsync(context, exceptionMessages);
+                HandleExceptionAsync(context, exceptionMessages);
             }
         }
 
@@ -88,7 +88,7 @@ namespace MvcBurger.Web.Middlewares
 
         }
 
-        private static async Task HandleExceptionAsync(HttpContext context, IEnumerable<string> exceptionMessages)
+        private static void HandleExceptionAsync(HttpContext context, IEnumerable<string> exceptionMessages)
         {
 
             context.Session.SetString("Errors", JsonSerializer.Serialize(exceptionMessages));

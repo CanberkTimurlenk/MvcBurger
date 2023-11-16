@@ -8,7 +8,6 @@ namespace MvcBurger.Persistance.Configurations
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
-
         }
     }
 }

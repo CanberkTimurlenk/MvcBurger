@@ -47,6 +47,15 @@ namespace MvcBurger.Persistance.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "93c64b50-ed6a-4055-9498-ea449d4138dd",
+                            ConcurrencyStamp = "9c4b2db7-060c-4ca2-81fe-ca087f753287",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -134,6 +143,13 @@ namespace MvcBurger.Persistance.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "85bf13d3-5471-44c4-a8db-a28e67e39484",
+                            RoleId = "93c64b50-ed6a-4055-9498-ea449d4138dd"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -230,6 +246,27 @@ namespace MvcBurger.Persistance.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "85bf13d3-5471-44c4-a8db-a28e67e39484",
+                            AccessFailedCount = 0,
+                            Address = "",
+                            ConcurrencyStamp = "3a884d9f-3984-4c78-9287-e7e07db5f368",
+                            Email = "aa@aa.aa",
+                            EmailConfirmed = true,
+                            Firstname = "first",
+                            Lastname = "last",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "AA@AA.AA",
+                            NormalizedUserName = "AA@AA.AA",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFFz5zhasopIehHKqYzsZxCWQC76Pv0TKLgUe0/MARhZcCWedzMwT6EHDjL+SDKxWw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "15b9cf49-7503-43f9-a108-53f9913a2db3",
+                            TwoFactorEnabled = false,
+                            UserName = "aa@aa.aa"
+                        });
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.Drink", b =>

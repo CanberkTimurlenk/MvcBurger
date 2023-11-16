@@ -18,7 +18,7 @@ namespace MvcBurger.Application.Features.Menus.Queries.GetAll
 
         public async Task<GetAllMenusResponse> Handle(GetAllMenusRequest request, CancellationToken cancellationToken)
         {
-            var menus = await _repositoryManager.Menu.GetAll();
+            var menus = await _repositoryManager.Menu.GetAllAsync();
             var mappedMenus = _mapper.Map<IEnumerable<GetAllMenuResponseListItem>>(menus);
 
             return new GetAllMenusResponse { List = mappedMenus };

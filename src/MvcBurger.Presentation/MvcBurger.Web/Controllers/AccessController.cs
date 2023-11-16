@@ -1,5 +1,6 @@
 ﻿
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
 using MvcBurger.Application.Exceptions.BadRequestException;
@@ -19,11 +20,12 @@ namespace MvcBurger.Web.Controllers
         {
             _mediator = mediator;
         }
-
+        [Route("u/Login")]
         public IActionResult Login()
         {
             return View();
         }
+        [Route("u/Login")]
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginVM loginVM, string ReturnUrl)
         {
@@ -34,20 +36,25 @@ namespace MvcBurger.Web.Controllers
             };
             LoginAppUserResponse loginResponse;
 
-            try
-            {
-                loginResponse = await _mediator.Send(request);
-                HttpContext.Session.SetString("userId", loginResponse.UserId);
 
-                //HttpContext.Session.GetString("userId")
-            }
-            catch (Exception)
-            {
+            loginResponse = await _mediator.Send(request);
+
+            if (loginResponse.UserId is null)
                 return View();
-            }
+
+            HttpContext.Session.SetString("userId", loginResponse.UserId);
+            HttpContext.Session.SetString("roles", string.Join(",", loginResponse.Roles));
+
+            //HttpContext.Session.GetString("userId")
+
+
+
+
 
             if (loginResponse.UserId is not null)
             {
+                if (loginResponse.Roles.Contains("Admin"))
+                    return RedirectToAction("Menus", "Home", new { area = "Admin" });
 
                 //if (!string.IsNullOrEmpty(ReturnUrl))
                 //{
@@ -61,12 +68,14 @@ namespace MvcBurger.Web.Controllers
             else
                 return View(loginVM);
         }
+        [Route("u/Register")]
         public IActionResult Register()
         {
             // register view
 
             return View();
         }
+        [Route("u/Register")]
         [HttpPost]
         public async Task<IActionResult> Register(CreateUserVM userVM)
         {
@@ -103,7 +112,9 @@ namespace MvcBurger.Web.Controllers
         {
             LogoutAppUserRequest request = new LogoutAppUserRequest();
             await _mediator.Send(request);
+            HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
+
         }
     }
 }

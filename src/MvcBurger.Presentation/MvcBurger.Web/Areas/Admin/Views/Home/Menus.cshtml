@@ -1,0 +1,51 @@
+﻿@model GetMenuListVM
+@{
+    ViewData["Title"] = "Menus";    
+    Layout = "_AdminLayout";
+}
+
+<h1>Menus</h1>
+<div class="sticky-top">
+    <a class="btn btn-primary float-end me-5" asp-area="Admin" asp-action="AddMenu" asp-controller="Home"><i class="mdi mdi-plus"></i> New Menu</a>
+</div><!--new butonu ustte kaliyor mu?-->
+<div class="row d-flex justify-content-center">
+    <div class="col-8 ">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Menu</th>
+                    <th>Menu Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var menu in Model.MenuList)
+                    {
+
+                        <tr>
+                            <td>
+                                <img src="@menu.ImageUrl" alt="@menu.Name" class="w-25 h-100" />
+                            </td>
+                            <td>@menu.Name</td>
+                            <td>$@menu.Price</td>
+                            <td>
+                                <a type="button" class="btn btn-primary" asp-action="MenuUpdate" asp-controller="Home" asp-route-id="@menu.Id">Update</a>
+                                <a type="button" class="btn btn-danger" asp-action="MenuDelete" asp-controller="Home" asp-route-id="@menu.Id">Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>Gosterilecek Bir Menu Yok</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

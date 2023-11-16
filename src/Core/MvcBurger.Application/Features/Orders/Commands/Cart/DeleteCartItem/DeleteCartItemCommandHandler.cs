@@ -30,7 +30,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
 
             _repositoryManager.OrderItem.Remove(cartItemToDelete);
 
-            var extraIngredientsToDelete = await _repositoryManager.OrderItemExtraIngredient.GetAll(oi => oi.OrderItemId == request.OrderItemId);
+            var extraIngredientsToDelete = await _repositoryManager.OrderItemExtraIngredient.GetAllAsync(oi => oi.OrderItemId == request.OrderItemId);
 
             _repositoryManager.OrderItemExtraIngredient.RemoveRange(extraIngredientsToDelete);
 
