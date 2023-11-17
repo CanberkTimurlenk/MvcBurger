@@ -17,7 +17,7 @@ namespace MvcBurger.Application.Features.Queries.Drinks.GetById
 
         public async Task<GetByIdDrinkResponse> Handle(GetByIdDrinkRequest request, CancellationToken cancellationToken)
         {
-            var drink = await _repositoryManager.Drink.Get(d => d.Id == request.Id);
+            var drink = await _repositoryManager.Drink.GetAsync(d => d.Id == request.Id);
 
             GetByIdDrinkResponse response = _mapper.Map<GetByIdDrinkResponse>(drink);
 

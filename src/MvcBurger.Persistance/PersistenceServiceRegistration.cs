@@ -32,7 +32,7 @@ namespace MvcBurger.Persistance
             services.AddScoped<ISauceOrderRepository, SauceOrderRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderItemExtraIngredientRepository, OrderItemExtraIngredientRepository>();
-            services.AddScoped<IDrinkRepository, DrinkRepository>();
+            services.AddScoped<IDrinkRepository, DrinkRepository>();    
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<ISauceRepository, SauceRepository>();
 

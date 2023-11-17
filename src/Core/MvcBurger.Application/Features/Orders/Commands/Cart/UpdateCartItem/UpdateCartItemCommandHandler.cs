@@ -25,12 +25,13 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
         public async Task<UpdateCartItemResponse> Handle(UpdateCartItemRequest request, CancellationToken cancellationToken)
         {
 
-            var cartItem = await _repositoryManager.OrderItem.Get(o => o.Id.Equals(request.OrderItemId));
+            var cartItem = await _repositoryManager.OrderItem.GetAsync(oi => oi.Id.Equals(request.OrderItemId));
 
             if (cartItem is null)
                 throw new CartItemNotFoundException(request.AppUserId, request.OrderItemId);
 
-            _mapper.Map(cartItem, request.OrderItemRequest);
+            _mapper.Map(request.OrderItemRequest, cartItem);
+
 
             var extra = request.OrderItemRequest.ExtraIngredientId.Select(ei => new OrderItemExtraIngredient
             {
@@ -40,8 +41,6 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
 
             cartItem.OrderItemExtraIngredient = extra;
 
-
-            _repositoryManager.OrderItem.Update(cartItem);
             await _repositoryManager.SaveAsync();
 
             var cart = await _repositoryManager.Order.GetCartByUserId(request.AppUserId);

@@ -2,7 +2,7 @@
 using MvcBurger.Application.Features.Orders.Commands.Cart.Common;
 using MvcBurger.Domain.Enums;
 
-namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
+namespace MvcBurger.Application.Features.Orders.Commands.Cart.DeleteCartItem
 {
     public class DeleteCartItemRequest : IRequest<DeleteCartItemResponse>
     {

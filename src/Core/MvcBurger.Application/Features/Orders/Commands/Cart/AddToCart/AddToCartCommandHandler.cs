@@ -24,7 +24,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart
         {
 
 
-            var order = await _repositoryManager.Order.Get(o => o.AppUserId.Equals(request.AppUserId) && o.OrderStatus == OrderStatus.Cart);
+            var order = await _repositoryManager.Order.GetAsync(o => o.AppUserId.Equals(request.AppUserId) && o.OrderStatus == OrderStatus.Cart);
 
             if (order is null)
             {

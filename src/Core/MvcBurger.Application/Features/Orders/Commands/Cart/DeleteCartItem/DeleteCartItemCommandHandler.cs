@@ -5,7 +5,7 @@ using MvcBurger.Application.Exceptions.NotFoundException;
 using MvcBurger.Application.Helpers;
 using MvcBurger.Domain.Entities;
 
-namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
+namespace MvcBurger.Application.Features.Orders.Commands.Cart.DeleteCartItem
 {
     public class DeleteCartItemCommandHandler : IRequestHandler<DeleteCartItemRequest, DeleteCartItemResponse>
     {
@@ -23,7 +23,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
         public async Task<DeleteCartItemResponse> Handle(DeleteCartItemRequest request, CancellationToken cancellationToken)
         {
 
-            var cartItemToDelete = await _repositoryManager.OrderItem.Get(o => o.Id.Equals(request.OrderItemId));
+            var cartItemToDelete = await _repositoryManager.OrderItem.GetAsync(oi => oi.Id.Equals(request.OrderItemId));
 
             if (cartItemToDelete == null)
                 throw new CartItemNotFoundException(request.AppUserId, request.OrderItemId);

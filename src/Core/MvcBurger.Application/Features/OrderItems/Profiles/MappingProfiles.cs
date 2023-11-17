@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MvcBurger.Application.Features.Commands.Drinks.Create;
+using MvcBurger.Application.Features.OrderItems.Queries.GetById;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.OrderItems.Profiles
@@ -8,8 +9,8 @@ namespace MvcBurger.Application.Features.OrderItems.Profiles
     {
         public MappingProfiles()
         {
-            CreateMap<OrderItemExtraIngredient, CreateOrderItemExtraIngredientResponse>().ReverseMap();
-            CreateMap<OrderItemExtraIngredient, CreateOrderItemExtraIngredientResponse>().ReverseMap();
+            CreateMap<OrderItem, GetByIdOrderItemRequest>().ReverseMap();
+            CreateMap<OrderItem, GetByIdOrderItemResponse>().ReverseMap();
 
         }
     }

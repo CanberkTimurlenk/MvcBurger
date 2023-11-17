@@ -4,12 +4,11 @@ using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Persistance.Configurations
 {
-    public class MenuOrderExtraIngredientConfiguration : IEntityTypeConfiguration<OrderItemExtraIngredient>
+    public class OrderItemExtraIngredientConfiguration : IEntityTypeConfiguration<OrderItemExtraIngredient>
     {
         public void Configure(EntityTypeBuilder<OrderItemExtraIngredient> builder)
         {
-            builder
-                .HasKey(moei => new { moei.ExtraIngredientId, moei.OrderItemId });
+            builder.HasKey(moei => moei.Id);
 
             builder
                 .HasOne(moei => moei.OrderItem)

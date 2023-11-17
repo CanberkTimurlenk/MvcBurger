@@ -18,7 +18,7 @@ namespace MvcBurger.Application.Features.Menus.Queries.GetById
 
         public async Task<GetByIdMenuResponse> Handle(GetByIdMenuRequest request, CancellationToken cancellationToken)
         {
-            var menu = await _repositoryManager.Menu.Get(m => m.Id.Equals(request.Id));
+            var menu = await _repositoryManager.Menu.GetAsync(m => m.Id.Equals(request.Id));
 
             GetByIdMenuResponse response = _mapper.Map<GetByIdMenuResponse>(menu);
             return response;
