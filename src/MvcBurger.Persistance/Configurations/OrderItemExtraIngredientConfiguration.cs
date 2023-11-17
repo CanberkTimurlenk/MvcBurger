@@ -8,7 +8,7 @@ namespace MvcBurger.Persistance.Configurations
     {
         public void Configure(EntityTypeBuilder<OrderItemExtraIngredient> builder)
         {
-            builder.HasKey(moei => moei.Id);
+            builder.HasKey(moei => new { moei.OrderItemId, moei.ExtraIngredientId });
 
             builder
                 .HasOne(moei => moei.OrderItem)

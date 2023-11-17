@@ -1,0 +1,22 @@
+﻿@using MvcBurger.Application.Features.Users.Queries.Login;
+@model LoginAppUserRequest
+
+@{
+    ViewData["Title"] = "Login";
+     Layout = "_LoginRegister";
+}
+
+
+<div class="mt-5">
+    <div class="login-page rounded border thumbnail shadow border-success ">
+        <h3 class="text-center">Login</h3>
+        <div class="form rounded">
+            <form class="login-form rounded" method="post">
+                <input type="text" asp-for="Email" placeholder="Email" />
+                <input type="password" asp-for="Password" placeholder="Password" />
+                <button type="submit">Login</button>
+                <p class="message">Not registered? <a asp-action="Register">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+</div>

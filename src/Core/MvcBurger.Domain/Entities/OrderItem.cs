@@ -1,4 +1,5 @@
-﻿using MvcBurger.Domain.Entities.Common;
+﻿using MvcBurger.Domain.Entities;
+using MvcBurger.Domain.Entities.Common;
 using MvcBurger.Domain.Enums;
 
 namespace MvcBurger.Domain.Entities
@@ -19,7 +20,9 @@ namespace MvcBurger.Domain.Entities
 
         public Size Size { get; set; }
 
-        public ICollection<OrderItemExtraIngredient> OrderItemExtraIngredient { get; set; }
+        public ICollection<OrderItemExtraIngredient>? OrderItemExtraIngredient { get; set; }
     }
 
 }
+
+

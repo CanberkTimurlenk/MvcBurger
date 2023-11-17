@@ -67,6 +67,13 @@ namespace MvcBurger.Persistance.Services
             }
         }
 
+        public async Task<IEnumerable<string>> GetRolesByUserAsync(AppUser user)
+        {
+
+            return (await _userManager.GetRolesAsync(user));
+
+        }
+
         public async Task<AppUser> FindByEmailAsync(string email)
         {
             return await _userManager.FindByEmailAsync(email);

@@ -1,0 +1,7 @@
+#logout {
+    color: #fff !important
+}
+
+    #logout:hover {
+        color: red !important;
+    }

@@ -18,7 +18,7 @@ namespace MvcBurger.Application.Features.Queries.Drinks.GetAll
 
         public async Task<GetAllDrinksResponse> Handle(GetAllDrinksRequest request, CancellationToken cancellationToken)
         {
-            var drinks = await _repositoryManager.Drink.GetAll();
+            var drinks = await _repositoryManager.Drink.GetAllAsync();
             var mappedDrinks = _mapper.Map<IEnumerable<GetAllDrinksResponseListItem>>(drinks);
 
             return new GetAllDrinksResponse { List = mappedDrinks };

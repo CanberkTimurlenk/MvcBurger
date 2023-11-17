@@ -34,6 +34,7 @@ namespace MvcBurger.Persistance.Repositories
                                   CartItems = o.OrderItems.Select(oi => new CartItemDto
                                   {
                                       Id = oi.Id,
+                                      Amount = oi.Amount,
                                       Size = oi.Size,
                                       Menu = new MenuDto { Id = oi.Menu.Id, Name = oi.Menu.Name, Price = oi.Menu.Price },
                                       Drink = new DrinkDto { Id = oi.Id, Name = oi.Menu.Name },

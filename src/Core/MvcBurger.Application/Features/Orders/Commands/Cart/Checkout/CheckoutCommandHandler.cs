@@ -20,13 +20,15 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.Checkout
         {
             var cartContent = await _repositoryManager.Order.GetAllAsync(o => o.AppUserId.Equals(request.AppUserId) && o.OrderStatus == OrderStatus.Cart);
 
-            cartContent.ToList().ForEach(cartContent => cartContent.OrderStatus = OrderStatus.PaymentReceived);
+            if (cartContent.Count() > 0)
+            {
+                cartContent.ToList().ForEach(cartContent => cartContent.OrderStatus = OrderStatus.PaymentReceived);
+
+                await _repositoryManager.SaveAsync();
+            }
+
 
             return new CheckoutResponse();
         }
     }
 }
-
-
-
-

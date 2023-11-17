@@ -1,9 +1,11 @@
-﻿namespace MvcBurger.Application.Contracts.Services.UserService
+﻿using MvcBurger.Domain.Entities;
+
+namespace MvcBurger.Application.Contracts.Services.UserService
 {
     public interface IAuthService
     {
-        Task<string> LoginAsync(string email, string password);
-        Task Logout();
+        Task<AppUser> LoginAsync(string email, string password);
+        Task Logout();        
 
     }
 }

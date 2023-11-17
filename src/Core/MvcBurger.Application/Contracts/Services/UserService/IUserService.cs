@@ -9,5 +9,6 @@ namespace MvcBurger.Application.Contracts.Services.UserService
         Task UpdatePasswordAsync(string userId, string resetToken, string newPassword);
         Task AssignRoleToUserAsnyc(string userId, string[] roles);
         Task<AppUser> FindByEmailAsync(string email);
+        Task<IEnumerable<string>> GetRolesByUserAsync(AppUser user);
     }
 }

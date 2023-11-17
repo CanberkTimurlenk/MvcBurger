@@ -10,6 +10,6 @@ namespace MvcBurger.Application.Features.OrderItems.Queries.GetById
         public Guid OrderId { get; set; }
         public Guid DrinkId { get; set; }
         public Size Size { get; set; }
-        public ICollection<OrderItemExtraIngredient> OrderItemExtraIngredient { get; set; }
+        public ICollection<OrderItemExtraIngredient>? OrderItemExtraIngredient { get; set; }
     }
 }
