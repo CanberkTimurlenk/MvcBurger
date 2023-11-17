@@ -8,31 +8,32 @@
     <div class="login-page rounded border thumbnail shadow border-success ">
         <h3 class="text-center">Register</h3>
         <div class="form rounded">
+            <h4 class="text-danger">@ViewBag.errorMessage</h4>
         <form class="text-start" asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group border-success">
-                <input asp-for="Username" class="form-control" placeholder="Username" />
                 <span asp-validation-for="Username" class="text-danger"></span>
+                <input asp-for="Username" class="form-control" placeholder="Username" />
             </div>
             <div class="form-group">
-                <input asp-for="Firstname" class="form-control" placeholder="Firstname" />
                 <span asp-validation-for="Firstname" class="text-danger"></span>
+                <input asp-for="Firstname" class="form-control" placeholder="Firstname" />
             </div>
             <div class="form-group">
-                <input asp-for="Lastname" class="form-control" placeholder="Lastname" />
                 <span asp-validation-for="Lastname" class="text-danger"></span>
+                <input asp-for="Lastname" class="form-control" placeholder="Lastname" />
             </div>
             <div class="form-group">
-                <input asp-for="Email" class="form-control" placeholder="Email" />
                 <span asp-validation-for="Email" class="text-danger"></span>
+                <input asp-for="Email" class="form-control" placeholder="Email" />
             </div>
             <div class="form-group">
-                <input asp-for="Password" class="form-control" placeholder="Password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
+                <input asp-for="Password" class="form-control" placeholder="Password" />
             </div>
             <div class="form-group">
-                <input asp-for="Address" class="form-control" placeholder="Adress" />
                 <span asp-validation-for="Address" class="text-danger"></span>
+                <input asp-for="Address" class="form-control" placeholder="Adress" />
             </div>
             <div class="form-group d-flex justify-content-center">
                 <button type="submit">Create</button>

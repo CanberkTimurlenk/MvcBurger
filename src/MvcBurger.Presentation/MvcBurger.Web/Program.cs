@@ -38,6 +38,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(
 
 builder.Services.ConfigureApplicationCookie(option =>
 {
+    option.Cookie.Name = "cookie";
     //option.AccessDeniedPath = null;
     option.LoginPath = "/u/Login";
     option.SlidingExpiration = true;

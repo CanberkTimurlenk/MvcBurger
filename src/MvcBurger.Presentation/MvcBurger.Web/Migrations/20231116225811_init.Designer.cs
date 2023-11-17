@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcBurger.Persistance.Contexts;
 
 #nullable disable
 
-namespace MvcBurger.Persistance.Migrations
+namespace MvcBurger.Web.Migrations
 {
     [DbContext(typeof(BurgerDbContext))]
-    partial class BurgerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231116225811_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,6 +49,15 @@ namespace MvcBurger.Persistance.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "93c64b50-ed6a-4055-9498-ea449d4138dd",
+                            ConcurrencyStamp = "c7366fa0-6095-4b12-81e0-48ce7c2737fb",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -134,6 +145,13 @@ namespace MvcBurger.Persistance.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "85bf13d3-5471-44c4-a8db-a28e67e39484",
+                            RoleId = "93c64b50-ed6a-4055-9498-ea449d4138dd"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -230,6 +248,27 @@ namespace MvcBurger.Persistance.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "85bf13d3-5471-44c4-a8db-a28e67e39484",
+                            AccessFailedCount = 0,
+                            Address = "",
+                            ConcurrencyStamp = "12f8dd13-a372-452e-bcd6-d82f4539a56e",
+                            Email = "aa@aa.aa",
+                            EmailConfirmed = true,
+                            Firstname = "first",
+                            Lastname = "last",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "AA@AA.AA",
+                            NormalizedUserName = "AA@AA.AA",
+                            PasswordHash = "AQAAAAEAACcQAAAAEND67vC+W0o+wh4MgODe04fTzHcEPygi3jKpRfCTw8Kcat9iaEitItXrGx+boySifg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "101a1f78-dbbb-4a41-9bdb-ed871c82923c",
+                            TwoFactorEnabled = false,
+                            UserName = "aa@aa.aa"
+                        });
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.Drink", b =>
@@ -348,21 +387,15 @@ namespace MvcBurger.Persistance.Migrations
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.OrderItemExtraIngredient", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("OrderItemId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ExtraIngredientId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("OrderItemId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
+                    b.HasKey("OrderItemId", "ExtraIngredientId");
 
                     b.HasIndex("ExtraIngredientId");
-
-                    b.HasIndex("OrderItemId");
 
                     b.ToTable("OrderItemExtraIngredients");
                 });

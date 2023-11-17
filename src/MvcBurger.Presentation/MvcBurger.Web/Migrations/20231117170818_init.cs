@@ -314,12 +314,32 @@ namespace MvcBurger.Web.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+<<<<<<<< HEAD:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117144808_init.cs
                 values: new object[] { "93c64b50-ed6a-4055-9498-ea449d4138dd", "5f789699-07d0-4aec-848c-3e5072f39a8d", "Admin", "ADMİN" });
+========
+                values: new object[] { "93c64b50-ed6a-4055-9498-ea449d4138dd", "17026858-fdb2-44de-a1fd-fc590254aa22", "Admin", "ADMIN" });
+>>>>>>>> bora:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117170818_init.cs
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+<<<<<<<< HEAD:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117144808_init.cs
                 values: new object[] { "85bf13d3-5471-44c4-a8db-a28e67e39484", 0, "", "ba340d8a-b075-42c1-883a-6aab7bccd18f", "aa@aa.aa", true, "first", "last", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAEAACcQAAAAELXkyK8Gs1yASedb7rRWNUJpLXZkgl8wh61CbDQNwEMAL5PyDWx0AWVJ3u3+pwPgZw==", null, false, "bb90db8f-793d-44b3-b28b-ed630ca734ba", false, "aa@aa.aa" });
+========
+                values: new object[] { "85bf13d3-5471-44c4-a8db-a28e67e39484", 0, "", "b500c0ee-3948-429e-9f51-57f583f54ea1", "aa@aa.aa", true, "first", "last", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAEAACcQAAAAEPwLbNLgm6sAO/uV3mH0nj3GFXhFNJ0PrhhrMZxUNQdTihiuFSJ+fdtjWAcLH2+FAw==", null, false, "32a8c83a-6d97-40bb-924a-bfb4c826b5af", false, "aa@aa.aa" });
+
+            migrationBuilder.InsertData(
+                table: "Drinks",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { new Guid("4d9b2a79-8eb2-4162-a636-fc6b60301c09"), "Fanta" },
+                    { new Guid("5f7ea456-b664-4f64-a579-bd0d6ce1f965"), "Dr Pepper" },
+                    { new Guid("7c7802de-55b9-4cd0-977f-331e730006ee"), "Sprite" },
+                    { new Guid("b6ed9936-b985-4f92-9e36-1789916b6ffd"), "Cola" },
+                    { new Guid("c094082d-7245-44f0-9638-fd7a82d432ac"), "Ice-Tea" }
+                });
+>>>>>>>> bora:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117170818_init.cs
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
