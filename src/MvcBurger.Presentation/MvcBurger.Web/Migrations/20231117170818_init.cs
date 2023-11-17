@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MvcBurger.Persistance.Migrations
+namespace MvcBurger.Web.Migrations
 {
     public partial class init : Migration
     {
@@ -314,12 +314,24 @@ namespace MvcBurger.Persistance.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "93c64b50-ed6a-4055-9498-ea449d4138dd", "9c4b2db7-060c-4ca2-81fe-ca087f753287", "Admin", "ADMIN" });
+                values: new object[] { "93c64b50-ed6a-4055-9498-ea449d4138dd", "17026858-fdb2-44de-a1fd-fc590254aa22", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "85bf13d3-5471-44c4-a8db-a28e67e39484", 0, "", "3a884d9f-3984-4c78-9287-e7e07db5f368", "aa@aa.aa", true, "first", "last", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAEAACcQAAAAEFFz5zhasopIehHKqYzsZxCWQC76Pv0TKLgUe0/MARhZcCWedzMwT6EHDjL+SDKxWw==", null, false, "15b9cf49-7503-43f9-a108-53f9913a2db3", false, "aa@aa.aa" });
+                values: new object[] { "85bf13d3-5471-44c4-a8db-a28e67e39484", 0, "", "b500c0ee-3948-429e-9f51-57f583f54ea1", "aa@aa.aa", true, "first", "last", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAEAACcQAAAAEPwLbNLgm6sAO/uV3mH0nj3GFXhFNJ0PrhhrMZxUNQdTihiuFSJ+fdtjWAcLH2+FAw==", null, false, "32a8c83a-6d97-40bb-924a-bfb4c826b5af", false, "aa@aa.aa" });
+
+            migrationBuilder.InsertData(
+                table: "Drinks",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { new Guid("4d9b2a79-8eb2-4162-a636-fc6b60301c09"), "Fanta" },
+                    { new Guid("5f7ea456-b664-4f64-a579-bd0d6ce1f965"), "Dr Pepper" },
+                    { new Guid("7c7802de-55b9-4cd0-977f-331e730006ee"), "Sprite" },
+                    { new Guid("b6ed9936-b985-4f92-9e36-1789916b6ffd"), "Cola" },
+                    { new Guid("c094082d-7245-44f0-9638-fd7a82d432ac"), "Ice-Tea" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

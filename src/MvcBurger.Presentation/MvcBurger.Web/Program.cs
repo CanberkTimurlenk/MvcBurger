@@ -38,11 +38,12 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(
 
 builder.Services.ConfigureApplicationCookie(option =>
 {
+    option.Cookie.Name = "cookie";
     //option.AccessDeniedPath = null;
     option.LoginPath = "/u/Login";
     option.SlidingExpiration = true;
     option.Cookie.IsEssential = true;
-    option.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+    option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
 });
 
 

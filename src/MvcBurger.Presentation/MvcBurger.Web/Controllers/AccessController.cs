@@ -25,88 +25,76 @@ namespace MvcBurger.Web.Controllers
         {
             return View();
         }
-        [Route("u/Login")]
         [HttpPost]
-        public async Task<IActionResult> Login(UserLoginVM loginVM, string ReturnUrl)
+        [Route("u/Login")]
+        public async Task<IActionResult> Login(UserLoginVM loginVM)
         {
-            LoginAppUserRequest request = new LoginAppUserRequest()
+
+            if (ModelState.IsValid)
             {
-                Password = loginVM.Password,
-                Email = loginVM.Email
-            };
-            LoginAppUserResponse loginResponse;
 
+                LoginAppUserRequest request = new LoginAppUserRequest()
+                {
+                    Password = loginVM.Password,
+                    Email = loginVM.Email
+                };
+                LoginAppUserResponse loginResponse;
 
-            loginResponse = await _mediator.Send(request);
+                loginResponse = await _mediator.Send(request);
 
-            if (loginResponse.UserId is null)
-                return View();
+                if (loginResponse.UserId is null)
+                    return View();
 
-            HttpContext.Session.SetString("userId", loginResponse.UserId);
-            HttpContext.Session.SetString("roles", string.Join(",", loginResponse.Roles));
+                HttpContext.Session.SetString("userId", loginResponse.UserId);
+                HttpContext.Session.SetString("roles", string.Join(",", loginResponse.Roles));
 
-            //HttpContext.Session.GetString("userId")
+                    if (loginResponse.Roles.Contains("Admin"))
+                        return RedirectToAction("Menus", "Home", new { area = "Admin" });
 
-
-
-
-
-            if (loginResponse.UserId is not null)
-            {
-                if (loginResponse.Roles.Contains("Admin"))
-                    return RedirectToAction("Menus", "Home", new { area = "Admin" });
-
-                //if (!string.IsNullOrEmpty(ReturnUrl))
-                //{
-                //    return LocalRedirect(ReturnUrl);
-                //}
-                //else
-                //{
-                return RedirectToAction("Index", "Home");
-                //}
+                    return RedirectToAction("Index", "Home");                
             }
-            else
-                return View(loginVM);
+
+            return View(loginVM);
         }
         [Route("u/Register")]
         public IActionResult Register()
         {
-            // register view
-
             return View();
         }
         [Route("u/Register")]
         [HttpPost]
         public async Task<IActionResult> Register(CreateUserVM userVM)
         {
-            var request = new CreateAppUserRequest()
+            if (ModelState.IsValid)
             {
-                Address = userVM.Address,
-                Password = userVM.Password,
-                Email = userVM.Email,
-                Firstname = userVM.Firstname,
-                Lastname = userVM.Lastname
-            };
-            CreateAppUserResponse response;
-            try
-            {
-                response = await _mediator.Send(request);
+                var request = new CreateAppUserRequest()
+                {
+                    Address = userVM.Address,
+                    Password = userVM.Password,
+                    Email = userVM.Email,
+                    Firstname = userVM.Firstname,
+                    Lastname = userVM.Lastname
+                };
+                CreateAppUserResponse response;
+                try
+                {
+                    response = await _mediator.Send(request);
+                }
+                catch (Exception)
+                {
+                    return View();
+                }
+                if (response.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.errorMessage = userVM.Email + " is already in use!";
+                    return View(userVM);
+                }
             }
-            catch (Exception)
-            {
-                return View();
-            }
-            if (response.Succeeded)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                // kayıt başarısız
-                // response.Message
-                // burda mesaj mevcut geri bildirim verebilirsin
-                return View(userVM);
-            }
+            return View(userVM);
         }
         public async Task<IActionResult> Logout()
         {
@@ -114,7 +102,6 @@ namespace MvcBurger.Web.Controllers
             await _mediator.Send(request);
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
-
         }
     }
 }

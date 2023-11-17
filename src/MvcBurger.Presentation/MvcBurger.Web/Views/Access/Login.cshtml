@@ -1,5 +1,6 @@
 ﻿@using MvcBurger.Application.Features.Users.Queries.Login;
-@model LoginAppUserRequest
+@using MvcBurger.Web.Models.VMs;
+@model UserLoginVM
 
 @{
     ViewData["Title"] = "Login";
@@ -12,7 +13,10 @@
         <h3 class="text-center">Login</h3>
         <div class="form rounded">
             <form class="login-form rounded" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <span asp-validation-for="Email" class="text-danger"></span>
                 <input type="text" asp-for="Email" placeholder="Email" />
+                <span asp-validation-for="Password" class="text-danger"></span>
                 <input type="password" asp-for="Password" placeholder="Password" />
                 <button type="submit">Login</button>
                 <p class="message">Not registered? <a asp-action="Register">Create an account</a></p>

@@ -3,12 +3,11 @@ using MediatR;
 using MvcBurger.Application.Contracts.Repositories.Menus;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
 using MvcBurger.Application.Features.Commands.Menus.Create;
-using MvcBurger.Application.Pipelines.Logging;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.Menus.Create
 {
-    public class CreateMenuCommandHandler : IRequestHandler<CreateMenuRequest, CreateMenuResponse>, ILoggableRequest
+    public class CreateMenuCommandHandler : IRequestHandler<CreateMenuRequest, CreateMenuResponse>
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;

@@ -52,7 +52,7 @@ namespace MvcBurger.Web.Migrations
                         new
                         {
                             Id = "93c64b50-ed6a-4055-9498-ea449d4138dd",
-                            ConcurrencyStamp = "c7366fa0-6095-4b12-81e0-48ce7c2737fb",
+                            ConcurrencyStamp = "17026858-fdb2-44de-a1fd-fc590254aa22",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -253,7 +253,7 @@ namespace MvcBurger.Web.Migrations
                             Id = "85bf13d3-5471-44c4-a8db-a28e67e39484",
                             AccessFailedCount = 0,
                             Address = "",
-                            ConcurrencyStamp = "12f8dd13-a372-452e-bcd6-d82f4539a56e",
+                            ConcurrencyStamp = "b500c0ee-3948-429e-9f51-57f583f54ea1",
                             Email = "aa@aa.aa",
                             EmailConfirmed = true,
                             Firstname = "first",
@@ -261,9 +261,9 @@ namespace MvcBurger.Web.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AA@AA.AA",
                             NormalizedUserName = "AA@AA.AA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEND67vC+W0o+wh4MgODe04fTzHcEPygi3jKpRfCTw8Kcat9iaEitItXrGx+boySifg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPwLbNLgm6sAO/uV3mH0nj3GFXhFNJ0PrhhrMZxUNQdTihiuFSJ+fdtjWAcLH2+FAw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "101a1f78-dbbb-4a41-9bdb-ed871c82923c",
+                            SecurityStamp = "32a8c83a-6d97-40bb-924a-bfb4c826b5af",
                             TwoFactorEnabled = false,
                             UserName = "aa@aa.aa"
                         });
@@ -282,6 +282,33 @@ namespace MvcBurger.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Drinks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("4d9b2a79-8eb2-4162-a636-fc6b60301c09"),
+                            Name = "Fanta"
+                        },
+                        new
+                        {
+                            Id = new Guid("b6ed9936-b985-4f92-9e36-1789916b6ffd"),
+                            Name = "Cola"
+                        },
+                        new
+                        {
+                            Id = new Guid("7c7802de-55b9-4cd0-977f-331e730006ee"),
+                            Name = "Sprite"
+                        },
+                        new
+                        {
+                            Id = new Guid("c094082d-7245-44f0-9638-fd7a82d432ac"),
+                            Name = "Ice-Tea"
+                        },
+                        new
+                        {
+                            Id = new Guid("5f7ea456-b664-4f64-a579-bd0d6ce1f965"),
+                            Name = "Dr Pepper"
+                        });
                 });
 
             modelBuilder.Entity("MvcBurger.Domain.Entities.ExtraIngredient", b =>

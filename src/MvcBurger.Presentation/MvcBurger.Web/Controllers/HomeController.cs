@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using NuGet.Protocol.Plugins;
 using System.Collections;
 using System.Diagnostics;
+using System.Net;
 using System.Text;
 
 namespace MvcBurger.Web.Controllers
@@ -24,8 +25,7 @@ namespace MvcBurger.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var roles = HttpContext.Session.GetString("roles");
-            if (roles is not null && roles.Contains("Admin"))
+            if(User.IsInRole("Admin"))
                 return RedirectToAction("Menus", "Home", new { area = "Admin" });
 
             var allMenus = await _mediator.Send(new GetAllMenusRequest());
