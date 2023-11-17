@@ -12,7 +12,7 @@ using MvcBurger.Persistance.Contexts;
 namespace MvcBurger.Web.Migrations
 {
     [DbContext(typeof(BurgerDbContext))]
-    [Migration("20231116225811_init")]
+    [Migration("20231117144808_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,9 +54,9 @@ namespace MvcBurger.Web.Migrations
                         new
                         {
                             Id = "93c64b50-ed6a-4055-9498-ea449d4138dd",
-                            ConcurrencyStamp = "c7366fa0-6095-4b12-81e0-48ce7c2737fb",
+                            ConcurrencyStamp = "5f789699-07d0-4aec-848c-3e5072f39a8d",
                             Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            NormalizedName = "ADMİN"
                         });
                 });
 
@@ -255,7 +255,7 @@ namespace MvcBurger.Web.Migrations
                             Id = "85bf13d3-5471-44c4-a8db-a28e67e39484",
                             AccessFailedCount = 0,
                             Address = "",
-                            ConcurrencyStamp = "12f8dd13-a372-452e-bcd6-d82f4539a56e",
+                            ConcurrencyStamp = "ba340d8a-b075-42c1-883a-6aab7bccd18f",
                             Email = "aa@aa.aa",
                             EmailConfirmed = true,
                             Firstname = "first",
@@ -263,9 +263,9 @@ namespace MvcBurger.Web.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AA@AA.AA",
                             NormalizedUserName = "AA@AA.AA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEND67vC+W0o+wh4MgODe04fTzHcEPygi3jKpRfCTw8Kcat9iaEitItXrGx+boySifg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELXkyK8Gs1yASedb7rRWNUJpLXZkgl8wh61CbDQNwEMAL5PyDWx0AWVJ3u3+pwPgZw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "101a1f78-dbbb-4a41-9bdb-ed871c82923c",
+                            SecurityStamp = "bb90db8f-793d-44b3-b28b-ed630ca734ba",
                             TwoFactorEnabled = false,
                             UserName = "aa@aa.aa"
                         });

@@ -314,12 +314,12 @@ namespace MvcBurger.Web.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "93c64b50-ed6a-4055-9498-ea449d4138dd", "c7366fa0-6095-4b12-81e0-48ce7c2737fb", "Admin", "ADMIN" });
+                values: new object[] { "93c64b50-ed6a-4055-9498-ea449d4138dd", "5f789699-07d0-4aec-848c-3e5072f39a8d", "Admin", "ADMİN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "85bf13d3-5471-44c4-a8db-a28e67e39484", 0, "", "12f8dd13-a372-452e-bcd6-d82f4539a56e", "aa@aa.aa", true, "first", "last", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAEAACcQAAAAEND67vC+W0o+wh4MgODe04fTzHcEPygi3jKpRfCTw8Kcat9iaEitItXrGx+boySifg==", null, false, "101a1f78-dbbb-4a41-9bdb-ed871c82923c", false, "aa@aa.aa" });
+                values: new object[] { "85bf13d3-5471-44c4-a8db-a28e67e39484", 0, "", "ba340d8a-b075-42c1-883a-6aab7bccd18f", "aa@aa.aa", true, "first", "last", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAEAACcQAAAAELXkyK8Gs1yASedb7rRWNUJpLXZkgl8wh61CbDQNwEMAL5PyDWx0AWVJ3u3+pwPgZw==", null, false, "bb90db8f-793d-44b3-b28b-ed630ca734ba", false, "aa@aa.aa" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

@@ -42,7 +42,7 @@ builder.Services.ConfigureApplicationCookie(option =>
     option.LoginPath = "/u/Login";
     option.SlidingExpiration = true;
     option.Cookie.IsEssential = true;
-    option.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+    option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
 });
 
 

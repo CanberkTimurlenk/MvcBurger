@@ -30,14 +30,7 @@ namespace MvcBurger.Persistance.Repositories
         }
 
 
-        public new async Task<OrderItem?> GetAsync(Expression<Func<OrderItem, bool>> filter)
-        {
-            return await Table
-                .Include(oi => oi.OrderItemExtraIngredient)
-                .FirstOrDefaultAsync(filter);
-        }
-
-
+      
 
 
 

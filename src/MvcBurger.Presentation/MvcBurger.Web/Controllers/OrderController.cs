@@ -7,6 +7,7 @@ using MvcBurger.Application.Features.OrderItems.Queries.GetById;
 using MvcBurger.Application.Features.Orders.Commands.Cart.AddToCart;
 using MvcBurger.Application.Features.Orders.Commands.Cart.Checkout;
 using MvcBurger.Application.Features.Orders.Commands.Cart.Common;
+using MvcBurger.Application.Features.Orders.Commands.Cart.DeleteCartItem;
 using MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem;
 using MvcBurger.Application.Features.Orders.Queries.GetCartByUserId;
 using MvcBurger.Application.Features.Queries.Drinks.GetAll;

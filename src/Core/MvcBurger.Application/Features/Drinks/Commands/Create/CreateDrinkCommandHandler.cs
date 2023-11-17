@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
-using MvcBurger.Application.Pipelines.Logging;
 using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.Commands.Drinks.Create
