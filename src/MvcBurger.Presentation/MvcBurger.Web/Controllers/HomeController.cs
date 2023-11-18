@@ -33,12 +33,6 @@ namespace MvcBurger.Web.Controllers
             return View(new GetMenuListVM { MenuList = allMenus.List });
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-
         public IActionResult Error(string errors = "")
         {
             var err = JsonConvert.DeserializeObject<List<string>>(HttpContext.Session.GetString("Errors"));

@@ -15,25 +15,50 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/log.css">
 
 </head>
 <body>
     <!-- header section starts  -->
 
-    <header class="header">
+    <header class="header d-flex align-items-stretch justify-content-between pb-2">
 
         <div id="menu-btn" class="fas fa-bars icons"></div>
         <div></div>
         <nav class="navbar">
-            <a href="#home">home</a>
-            <a href="#menu">menu</a>
-            <a href="#about">about</a>
-            <span class="space"></span>
-            <a href="#contact">contact</a>
+            <div class="row justify-content-sm-between">
+                <div class="col-sm-2 mt-3">
+                    
+                        <a class="text-decoration-none" href="#home">home</a>
+                    
+                </div>
+                <div class="col-sm-2 mt-3">
+                    
+                        <a class="text-decoration-none" href="#menu">menu</a>
+                    
+                </div>
+                <div class="col-sm-4">
+                    
+                        <!-- Uncomment the line below if you want to wrap the image as well -->
+                        <!-- <a href="#home" class="logo"><img src="/images/logo.png" alt=""></a> -->
+                        <img src="/images/logo.png" alt="">
+                    
+                </div>
+                <div class="col-sm-2 mt-3">
+                    
+                        <a class="text-decoration-none" href="#about">about</a>
+                    
+                </div>
+                <div class="col-sm-2 mt-3">
+                    
+                        <a class="text-decoration-none" href="#contact">contact</a>
+                    
+                </div>
+            </div>
         </nav>
         <div>
-            <a asp-action="Cart" asp-controller="Order" class="fas fa-shopping-cart icons"></a>
+            <a asp-action="Cart" asp-controller="Order" class="fas fa-shopping-cart icons me-5"></a>
             @if (!User.Identity.IsAuthenticated)
             {
                 <a asp-action="Login" asp-controller="Access" class="fas fa-login icons">Login</a>
@@ -45,7 +70,6 @@
             }
         </div>
 
-        <a href="#home" class="logo"><img src="/images/logo.png" alt=""></a>
 
     </header>
 
@@ -70,17 +94,17 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="150">
             <i class="fas fa-hamburger"></i>
-            <h3>best quality</h3>            
+            <h3>best quality</h3>
         </div>
 
         <div class="box" data-aos="fade-up" data-aos-delay="300">
             <i class="fas fa-shipping-fast"></i>
-            <h3>free delivery</h3>            
+            <h3>free delivery</h3>
         </div>
 
         <div class="box" data-aos="fade-up" data-aos-delay="450">
             <i class="fas fa-headset"></i>
-            <h3>24/7 support</h3>            
+            <h3>24/7 support</h3>
         </div>
 
 

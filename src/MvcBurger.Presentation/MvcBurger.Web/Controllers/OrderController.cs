@@ -56,7 +56,7 @@ namespace MvcBurger.Web.Controllers
 
             TempData["selectedMenu"] = js;
 
-            return PartialView("OrderPartial", selected);
+            return PartialView("CreateUpdateOrder", selected);
         }
 
         [Route("od/menu-{id}")]
@@ -90,18 +90,13 @@ namespace MvcBurger.Web.Controllers
 
             return RedirectToAction(nameof(Cart), userCartVM);
         }
-
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Cart(GetUserCartVM userCartVM)
         {
             GetCartByUserIdRequest request = new GetCartByUserIdRequest() { AppUserId = HttpContext.User.Claims.First().Value };
 
-            if (userCartVM.Cart is null)
-            {
                 userCartVM.Cart = (await _mediator.Send(request)).Cart;
                 return View(userCartVM);
-            }
-
-            return View();
         }
 
         public async Task<IActionResult> Checkout()
@@ -157,7 +152,7 @@ namespace MvcBurger.Web.Controllers
 
             TempData["menuId"] = updateMenuVm.MenuId;
 
-            return PartialView("OrderPartial", updateMenuVm);
+            return PartialView("CreateUpdateOrder", updateMenuVm);
         }
 
         [Route("c/order-{id}")]

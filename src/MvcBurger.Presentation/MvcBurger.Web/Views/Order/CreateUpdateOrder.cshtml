@@ -1,0 +1,76 @@
+﻿@using MvcBurger.Domain.Enums;
+@model MvcBurger.Web.Models.VMs.SelectedMenuVM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "_Order";
+}
+
+<div class="container-fluid text-white col-7">
+    <div class="card bg-opacity-25 bg-transparent shadow border-success mt-5">
+        <div class="row d-flex justify-content-evenly mt-5" style="height: 550px;">
+            <div class="mt-5"></div>
+            <div class="col-md-5 text-center">
+                <h2>@Model.Name</h2>
+                <br />
+                <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
+                <br />
+                <div class="mt-5">
+                    @Html.DisplayFor(model => model.Description)
+                </div>
+                <br />
+                <div>
+                    $@Html.DisplayFor(model => model.Price)
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <form asp-action="@TempData["submitAction"]" method="post">
+                    <dl class="dl-horizontal">
+                        <dd>
+                            Selected Drink
+                        </dd>
+                        <dd>
+                            <select asp-for="SelectedDrinkId" class="form-control">
+                                @foreach (var drink in Model.AllDrinks)
+                                {
+                                    <option value="@drink.Id">@drink.Name</option>
+                                }
+                            </select>
+                        </dd>
+                        <br />
+                        <dt>
+                            @for (int i = 0; i < Model.Extras.Count; i++)
+                            {
+                                <div>
+                                    @Html.HiddenFor(model => model.Extras[i].SelectedIngredientId)
+                                    @Html.HiddenFor(model => model.Extras[i].ExtraName)
+                                    @Html.LabelFor(model => model.Extras[i].Checked, Model.Extras[i].ExtraName)
+                                    @Html.CheckBoxFor(model => model.Extras[i].Checked)
+                                </div>
+                            }
+                        </dt>
+                        <br />
+                        <dd>
+                            Amount
+                            <select asp-for="Amount" class="form-control">
+                                @for (int i = 1; i <= 4; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </dd>
+                        <br />
+                        <dd>
+                            Size
+                            <select asp-for="SelectedSize" class="form-control" asp-items="Html.GetEnumSelectList<Size>()"></select>
+                        </dd>
+
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </dl>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
