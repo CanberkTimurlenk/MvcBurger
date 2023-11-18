@@ -65,7 +65,7 @@
                             <select asp-for="SelectedSize" class="form-control" asp-items="Html.GetEnumSelectList<Size>()"></select>
                         </dd>
 
-                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <input type="submit" value="Add" asp-route-string="cart" class="btn btn-primary" />
                     </dl>
                 </form>
             </div>
