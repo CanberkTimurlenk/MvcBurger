@@ -9,7 +9,6 @@ namespace MvcBurger.Web.Models.VMs
         public string Email { get; init; }
         [Required]
         [DataType(DataType.Password)]
-        [MinLength(6), MaxLength(20)]
         public string Password { get; init; }
     }
 }
