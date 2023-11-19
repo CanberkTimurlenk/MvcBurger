@@ -14,21 +14,12 @@ namespace MvcBurger.Application.Features.SauceOrders.Commands.Create
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
+           
 
         }
 
         public async Task<CreateSauceOrderResponse> Handle(CreateSauceOrderRequest request, CancellationToken cancellationToken)
         {
-
-            // service logic
-            // ...........
-            // ...........
-            // ...........
-            // ...........
-            // ...........
-
-
             var souceOrder = _mapper.Map<SauceOrder>(request);
 
             await _repositoryManager.SauceOrder.AddAsync(souceOrder);

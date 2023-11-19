@@ -44,7 +44,7 @@ namespace MvcBurger.Persistance.Repositories.Common
 
         public async Task<TEntity?> FindAsync(Guid id)
         {
-            return await Table.FindAsync(id); // TODO: check if this works
+            return await Table.FindAsync(id); 
         }
 
         public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> filter)

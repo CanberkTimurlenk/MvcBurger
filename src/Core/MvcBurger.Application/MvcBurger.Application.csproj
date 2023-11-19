@@ -43,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\OrderItemExtraIngredients\Queries\" />
     <Folder Include="Features\SauceOrders\Queries\" />
     <Folder Include="Features\Sauces\Profiles\" />
     <Folder Include="Features\Sauces\Queries\" />

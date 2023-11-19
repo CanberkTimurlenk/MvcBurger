@@ -15,7 +15,6 @@ namespace MvcBurger.Application.Features.ExtraIngredients.Commands.Update
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
 
         }
 

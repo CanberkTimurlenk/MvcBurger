@@ -14,19 +14,13 @@ namespace MvcBurger.Application.Features.Commands.Drinks.Create
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
+          
 
         }
 
         public async Task<CreateExtraIngredientResponse> Handle(CreateExtraIngredientRequest request, CancellationToken cancellationToken)
         {
 
-            // service logic
-            // ...........
-            // ...........
-            // ...........
-            // ...........
-            // ...........
 
 
             var extraIngredient = _mapper.Map<ExtraIngredient>(request);

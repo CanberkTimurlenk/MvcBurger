@@ -103,7 +103,7 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
             var response = await _mediator.Send(new GetAllExtraIngredientsRequest());
             return View(new GetExtraIngredientsListVM() { ExstraList = response.List });
         }
-        [Route("/extra/add-{Id}")]
+        [Route("/extra/add")]
         public IActionResult AddExtra()
         {
             TempData["actionName"] = "AddExtra";
@@ -111,7 +111,7 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
             return PartialView("CreateUpdateIngredient", new ExtraIngredientVM());
         }
         [HttpPost]
-        [Route("/extra/add-{Id}")]
+        [Route("/extra/add")]
         public async Task<IActionResult> AddExtra(ExtraIngredientVM newExtra)
         {
             if (ModelState.IsValid)

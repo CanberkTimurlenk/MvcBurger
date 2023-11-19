@@ -12,11 +12,7 @@ using MvcBurger.Persistance.Contexts;
 namespace MvcBurger.Web.Migrations
 {
     [DbContext(typeof(BurgerDbContext))]
-<<<<<<<< HEAD:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117144808_init.Designer.cs
-    [Migration("20231117144808_init")]
-========
-    [Migration("20231117170818_init")]
->>>>>>>> bora:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117170818_init.Designer.cs
+    [Migration("20231119203608_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,11 +54,7 @@ namespace MvcBurger.Web.Migrations
                         new
                         {
                             Id = "93c64b50-ed6a-4055-9498-ea449d4138dd",
-<<<<<<<< HEAD:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117144808_init.Designer.cs
-                            ConcurrencyStamp = "5f789699-07d0-4aec-848c-3e5072f39a8d",
-========
-                            ConcurrencyStamp = "17026858-fdb2-44de-a1fd-fc590254aa22",
->>>>>>>> bora:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117170818_init.Designer.cs
+                            ConcurrencyStamp = "3f10fbfe-9f1f-419f-b1c7-b1d6f1704a9f",
                             Name = "Admin",
                             NormalizedName = "ADMİN"
                         });
@@ -263,11 +255,7 @@ namespace MvcBurger.Web.Migrations
                             Id = "85bf13d3-5471-44c4-a8db-a28e67e39484",
                             AccessFailedCount = 0,
                             Address = "",
-<<<<<<<< HEAD:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117144808_init.Designer.cs
-                            ConcurrencyStamp = "ba340d8a-b075-42c1-883a-6aab7bccd18f",
-========
-                            ConcurrencyStamp = "b500c0ee-3948-429e-9f51-57f583f54ea1",
->>>>>>>> bora:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117170818_init.Designer.cs
+                            ConcurrencyStamp = "1793708c-8399-4a9e-a0f2-43fd3b5ec78d",
                             Email = "aa@aa.aa",
                             EmailConfirmed = true,
                             Firstname = "first",
@@ -275,15 +263,9 @@ namespace MvcBurger.Web.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AA@AA.AA",
                             NormalizedUserName = "AA@AA.AA",
-<<<<<<<< HEAD:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117144808_init.Designer.cs
-                            PasswordHash = "AQAAAAEAACcQAAAAELXkyK8Gs1yASedb7rRWNUJpLXZkgl8wh61CbDQNwEMAL5PyDWx0AWVJ3u3+pwPgZw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGxUTRoSa6dzD1viys9p584SVSMNuN0i+tba7vdVrtbz1svS9XIFF0XptnD9z76daQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bb90db8f-793d-44b3-b28b-ed630ca734ba",
-========
-                            PasswordHash = "AQAAAAEAACcQAAAAEPwLbNLgm6sAO/uV3mH0nj3GFXhFNJ0PrhhrMZxUNQdTihiuFSJ+fdtjWAcLH2+FAw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "32a8c83a-6d97-40bb-924a-bfb4c826b5af",
->>>>>>>> bora:src/MvcBurger.Presentation/MvcBurger.Web/Migrations/20231117170818_init.Designer.cs
+                            SecurityStamp = "9e6e6168-4ad7-4501-970f-c4895c810de3",
                             TwoFactorEnabled = false,
                             UserName = "aa@aa.aa"
                         });

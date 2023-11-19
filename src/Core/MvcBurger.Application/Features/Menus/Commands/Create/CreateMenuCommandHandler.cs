@@ -16,7 +16,7 @@ namespace MvcBurger.Application.Features.Menus.Create
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
+           
 
         }
 

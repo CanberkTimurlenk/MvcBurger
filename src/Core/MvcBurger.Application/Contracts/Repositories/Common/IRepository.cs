@@ -9,7 +9,7 @@ namespace MvcBurger.Application.Contracts.Repositories.Common
         Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null!);
 
         Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> filter);
-        Task<TEntity?> FindAsync(Guid id); // TODO: check 
+        Task<TEntity?> FindAsync(Guid id); 
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> filter);
         Task<int> CountAsync(Expression<Func<TEntity, bool>> filter);
 

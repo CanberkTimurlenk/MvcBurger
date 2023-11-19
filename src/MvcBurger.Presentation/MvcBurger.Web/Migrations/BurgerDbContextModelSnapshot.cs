@@ -52,9 +52,9 @@ namespace MvcBurger.Web.Migrations
                         new
                         {
                             Id = "93c64b50-ed6a-4055-9498-ea449d4138dd",
-                            ConcurrencyStamp = "17026858-fdb2-44de-a1fd-fc590254aa22",
+                            ConcurrencyStamp = "3f10fbfe-9f1f-419f-b1c7-b1d6f1704a9f",
                             Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            NormalizedName = "ADMİN"
                         });
                 });
 
@@ -253,7 +253,7 @@ namespace MvcBurger.Web.Migrations
                             Id = "85bf13d3-5471-44c4-a8db-a28e67e39484",
                             AccessFailedCount = 0,
                             Address = "",
-                            ConcurrencyStamp = "b500c0ee-3948-429e-9f51-57f583f54ea1",
+                            ConcurrencyStamp = "1793708c-8399-4a9e-a0f2-43fd3b5ec78d",
                             Email = "aa@aa.aa",
                             EmailConfirmed = true,
                             Firstname = "first",
@@ -261,9 +261,9 @@ namespace MvcBurger.Web.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AA@AA.AA",
                             NormalizedUserName = "AA@AA.AA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPwLbNLgm6sAO/uV3mH0nj3GFXhFNJ0PrhhrMZxUNQdTihiuFSJ+fdtjWAcLH2+FAw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGxUTRoSa6dzD1viys9p584SVSMNuN0i+tba7vdVrtbz1svS9XIFF0XptnD9z76daQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "32a8c83a-6d97-40bb-924a-bfb4c826b5af",
+                            SecurityStamp = "9e6e6168-4ad7-4501-970f-c4895c810de3",
                             TwoFactorEnabled = false,
                             UserName = "aa@aa.aa"
                         });
