@@ -1,5 +1,4 @@
 ﻿using MvcBurger.Domain.Entities.Common;
-using MvcBurger.Persistance.Paging;
 using System.Linq.Expressions;
 
 namespace MvcBurger.Application.Contracts.Repositories.Common
@@ -9,7 +8,7 @@ namespace MvcBurger.Application.Contracts.Repositories.Common
         Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null!);
 
         Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> filter);
-        Task<TEntity?> FindAsync(Guid id); 
+        Task<TEntity?> FindAsync(Guid id);
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> filter);
         Task<int> CountAsync(Expression<Func<TEntity, bool>> filter);
 
