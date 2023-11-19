@@ -22,7 +22,6 @@ namespace MvcBurger.Persistance.Repositories
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-
         public new async Task<OrderItem?> GetAsync(Expression<Func<OrderItem, bool>> filter)
         {
             return await Table
@@ -31,6 +30,7 @@ namespace MvcBurger.Persistance.Repositories
         }
 
 
+      
 
 
 

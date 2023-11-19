@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using MvcBurger.Application.Contracts.Repositories.RepositoryManager;
-using MvcBurger.Application.Exceptions.NotFoundException;
-using MvcBurger.Domain.Entities;
 
 namespace MvcBurger.Application.Features.Menus.Commands.Update
 {
@@ -15,8 +13,6 @@ namespace MvcBurger.Application.Features.Menus.Commands.Update
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
-
         }
 
         public async Task<UpdateMenuResponse> Handle(UpdateMenuRequest request, CancellationToken cancellationToken)

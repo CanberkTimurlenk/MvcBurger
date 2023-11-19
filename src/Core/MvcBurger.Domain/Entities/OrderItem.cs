@@ -6,7 +6,6 @@ namespace MvcBurger.Domain.Entities
 {
     public class OrderItem : BaseEntity, IEntity
     {
-        // order id and menu id could be make unique 
         public Guid MenuId { get; set; }
         public Menu Menu { get; set; }
 

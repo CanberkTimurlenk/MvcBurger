@@ -14,7 +14,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Create
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
+            
 
         }
 

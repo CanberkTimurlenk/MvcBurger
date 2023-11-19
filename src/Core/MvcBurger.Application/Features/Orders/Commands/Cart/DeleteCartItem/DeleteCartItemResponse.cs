@@ -1,6 +1,6 @@
 ﻿using MvcBurger.Application.DTOs.Cart;
 
-namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
+namespace MvcBurger.Application.Features.Orders.Commands.Cart.DeleteCartItem
 {
     public record DeleteCartItemResponse
     {

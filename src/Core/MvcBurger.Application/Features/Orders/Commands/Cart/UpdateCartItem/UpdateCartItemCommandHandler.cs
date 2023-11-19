@@ -18,7 +18,6 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
 
         }
 

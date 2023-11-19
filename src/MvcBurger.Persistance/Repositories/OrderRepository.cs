@@ -20,7 +20,7 @@ namespace MvcBurger.Persistance.Repositories
         public async Task<CartDto?> GetCartByUserId(string appUserId)
         {
 
-            return await Table.Where(o => o.AppUserId == appUserId && o.OrderStatus == OrderStatus.Cart) //&& o.OrderStatus == OrderStatus.Cart)
+            return await Table.Where(o => o.AppUserId == appUserId && o.OrderStatus == OrderStatus.Cart) 
                               .Include(o => o.OrderItems)
                               .ThenInclude(orderItem => orderItem.Drink)
                               .Include(o => o.OrderItems)
@@ -47,6 +47,8 @@ namespace MvcBurger.Persistance.Repositories
 
                                   })
                               }).FirstOrDefaultAsync();
+
+
         }
     }
 }

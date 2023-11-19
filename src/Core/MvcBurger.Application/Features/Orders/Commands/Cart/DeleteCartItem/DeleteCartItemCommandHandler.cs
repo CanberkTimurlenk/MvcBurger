@@ -5,7 +5,7 @@ using MvcBurger.Application.Exceptions.NotFoundException;
 using MvcBurger.Application.Helpers;
 using MvcBurger.Domain.Entities;
 
-namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
+namespace MvcBurger.Application.Features.Orders.Commands.Cart.DeleteCartItem
 {
     public class DeleteCartItemCommandHandler : IRequestHandler<DeleteCartItemRequest, DeleteCartItemResponse>
     {
@@ -16,7 +16,7 @@ namespace MvcBurger.Application.Features.Orders.Commands.Cart.UpdateCartItem
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
-            // business rules if exists
+         
 
         }
 

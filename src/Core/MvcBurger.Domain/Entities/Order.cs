@@ -8,7 +8,7 @@ namespace MvcBurger.Domain.Entities
         public ICollection<OrderItem> OrderItems { get; set; }
         public ICollection<SauceOrder> SauceOrder { get; set; }
 
-        public decimal? TotalPrice { get; set; } // null when order state is cart or pending
+        public decimal? TotalPrice { get; set; }
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
 
         public string AppUserId { get; set; }
