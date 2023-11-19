@@ -33,6 +33,7 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
 
             return View(new GetMenuListVM { MenuList = response.List });
         }
+        [Route("/menu/add")]
         public IActionResult AddMenu()
         {
             TempData["actionName"] = "AddMenu";
@@ -40,20 +41,28 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
             return PartialView("CreateUpdateMenu", new MenuVM());
         }
         [HttpPost]
+        [Route("/menu/add")]
         public async Task<IActionResult> AddMenu(MenuVM newMenu)
         {
-            await _mediator.Send(new CreateMenuRequest()
+            if (ModelState.IsValid)
             {
-                Name = newMenu.Name,
-                Description = newMenu.Description,
-                Price = newMenu.Price,
-                ImageUrl = newMenu.ImageUrl
-            });
-            return RedirectToAction(nameof(Menus));
+                await _mediator.Send(new CreateMenuRequest()
+                {
+                    Name = newMenu.Name,
+                    Description = newMenu.Description,
+                    Price = newMenu.Price,
+                    ImageUrl = newMenu.ImageUrl
+                });
+                return RedirectToAction(nameof(Menus));
+            }
+            TempData["actionName"] = "AddMenu";
+            TempData["button"] = "Add Menu";
+            return PartialView("CreateUpdateMenu", new MenuVM());
         }
-        public async Task<IActionResult> MenuUpdate(Guid Id)
+        [Route("/menu/update-{Id}")]
+        public async Task<IActionResult> UpdateMenu(Guid Id)
         {
-            TempData["actionName"] = "MenuUpdate";
+            TempData["actionName"] = "UpdateMenu";
             TempData["button"] = "Update Menu";
             var menu = await _mediator.Send(new GetByIdMenuRequest() { Id = Id });
             MenuVM vm = new MenuVM()
@@ -66,19 +75,24 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
             return PartialView("CreateUpdateMenu", vm);
         }
         [HttpPost]
-        public async Task<IActionResult> MenuUpdate(MenuVM updatedMenu)
+        [Route("/menu/update-{Id}")]
+        public async Task<IActionResult> UpdateMenu(MenuVM updatedMenu)
         {
-            await _mediator.Send(new UpdateMenuRequest()
+            if (ModelState.IsValid)
             {
-                Name = updatedMenu.Name,
-                Description = updatedMenu.Description,
-                Price = updatedMenu.Price,
-                ImageUrl = updatedMenu.ImageUrl,
-                Id = updatedMenu.Id
-            });
-            return RedirectToAction(nameof(Menus));
+                await _mediator.Send(new UpdateMenuRequest()
+                {
+                    Name = updatedMenu.Name,
+                    Description = updatedMenu.Description,
+                    Price = updatedMenu.Price,
+                    ImageUrl = updatedMenu.ImageUrl,
+                    Id = updatedMenu.Id
+                });
+                return RedirectToAction(nameof(Menus));
+            }
+            return PartialView("CreateUpdateMenu", updatedMenu);
         }
-        public async Task<IActionResult> MenuDelete(Guid Id)
+        public async Task<IActionResult> DeleteMenu(Guid Id)
         {
             await _mediator.Send(new DeleteMenuRequest() { MenuId = Id });
             return RedirectToAction(nameof(Menus));
@@ -89,7 +103,7 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
             var response = await _mediator.Send(new GetAllExtraIngredientsRequest());
             return View(new GetExtraIngredientsListVM() { ExstraList = response.List });
         }
-
+        [Route("/extra/add-{Id}")]
         public IActionResult AddExtra()
         {
             TempData["actionName"] = "AddExtra";
@@ -97,19 +111,24 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
             return PartialView("CreateUpdateIngredient", new ExtraIngredientVM());
         }
         [HttpPost]
+        [Route("/extra/add-{Id}")]
         public async Task<IActionResult> AddExtra(ExtraIngredientVM newExtra)
         {
-            await _mediator.Send(new CreateExtraIngredientRequest()
+            if (ModelState.IsValid)
             {
-                Name = newExtra.Name,
-                Price = newExtra.Price
-            });
-            return RedirectToAction(nameof(Extras));
+                await _mediator.Send(new CreateExtraIngredientRequest()
+                {
+                    Name = newExtra.Name,
+                    Price = newExtra.Price
+                });
+                return RedirectToAction(nameof(Extras));
+            }
+            return View(newExtra);
         }
-
-        public async Task<IActionResult> ExtraUpdate(Guid Id)
+        [Route("/extra/update-{Id}")]
+        public async Task<IActionResult> UpdateExtra(Guid Id)
         {
-            TempData["actionName"] = "ExtraUpdate";
+            TempData["actionName"] = "UpdateExtra";
             TempData["button"] = "Update Ingredient";
             var response = await _mediator.Send(new GetByIdExtraIngredientRequest() { Id = Id });
             ExtraIngredientVM extra = new ExtraIngredientVM()
@@ -121,7 +140,8 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
             return PartialView("CreateUpdateIngredient", extra);
         }
         [HttpPost]
-        public async Task<IActionResult> ExtraUpdate(Guid Id, ExtraIngredientVM extra)
+        [Route("/extra/update-{Id}")]
+        public async Task<IActionResult> UpdateExtra(Guid Id, ExtraIngredientVM extra)
         {
             await _mediator.Send(new UpdateExtraIngredientRequest()
             {
@@ -132,7 +152,7 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Extras));
         }
 
-        public async Task<IActionResult> ExtraDelete(Guid Id)
+        public async Task<IActionResult> DeleteExtra(Guid Id)
         {
             await _mediator.Send(new DeleteExtraIngredientRequest() { ExtraIngredientId = Id });
             return RedirectToAction(nameof(Extras));

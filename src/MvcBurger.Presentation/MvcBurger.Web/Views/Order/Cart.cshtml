@@ -4,48 +4,63 @@
     Layout = "_Order";
 }
 
-    <h2>Shopping Cart</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model?.Cart?.CartItems != null)
-            {
-                @foreach (var cartItem in Model.Cart.CartItems)
+<div class="row d-flex justify-content-center mt-5">
+    <div class="card bg-opacity-25 bg-transparent shadow border-success mt-5 col-7">
+        <h1 class="text-warning">Shopping Cart</h1>
+        <div class="table-responsive">
+        <table class="table table-hover text-white-50 text-center">
+            <thead>
+                <tr class="text-success">
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model?.Cart?.CartItems != null)
                 {
-                    <tr>
-                        <td class="text-white">@cartItem.Menu.Name</td>
-                    <td class="text-white">@cartItem.Menu.Price</td>
-                    <td class="text-white">@cartItem.Amount"</td>
-                    <td class="text-white">@(cartItem.Menu.Price * cartItem.Amount)</td>
-                        <td>
-                        <a type="button" class="btn btn-primary" asp-action="UpdateCartItem" asp-controller="Order" asp-route-id="@cartItem.Id">Update</a>
-                        <a type="button" class="btn btn-danger" asp-action="RemoveCartItem" asp-controller="Order" asp-route-id="@cartItem.Id">Remove</a>
-                        </td>
+                    @foreach (var cartItem in Model.Cart.CartItems)
+                    {
+                        <tr>
+                            <td class="text-white">@cartItem.Menu.Name</td>
+                            <td class="text-white">@cartItem.Menu.Price</td>
+                            <td class="text-white">@cartItem.Amount"</td>
+                            <td class="text-white">@(cartItem.Menu.Price * cartItem.Amount)</td>
+                            <td>
+                                <a type="button" class="btn btn-primary" asp-action="UpdateCartItem" asp-controller="Order" asp-route-id="@cartItem.Id">Update</a>
+                                <a type="button" class="btn btn-danger" asp-action="RemoveCartItem" asp-controller="Order" asp-route-id="@cartItem.Id">Remove</a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+                else
+                {
+                    <tr class="text-danger text-center">
+                        <td></td>
+                        <td></td>
+                        <td>You have not selected any item yet</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 }
-
-            }
-            else
-            {
-                <tr>
-                    <td>You have not selected any item yet</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    <div class="text-right">
-    <h4 class="text-white">Total: @Model?.Cart?.TotalPrice.ToString()</h4>
-        <a asp-action="Checkout" type="button" class="btn btn-success">Checkout</a>
+            </tbody>
+        </table>
+        </div>
+        <br />
     </div>
+        @if (Model?.Cart?.CartItems is not null)
+        {
+            <div class="d-flex justify-content-center mt-5">
+            <div>
+                <h4 class="text-white text-center">Total: $@Model?.Cart?.TotalPrice.ToString()</h4>
+                <a asp-action="Checkout" type="button" class="btn btn-success mt-3">Checkout</a>
+            </div>
+            </div>
+        }
+</div>
 
 

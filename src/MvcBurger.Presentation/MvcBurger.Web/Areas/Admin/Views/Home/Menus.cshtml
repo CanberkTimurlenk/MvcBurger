@@ -31,9 +31,9 @@
                             </td>
                             <td>@menu.Name</td>
                             <td>$@menu.Price</td>
-                            <td>
-                                <a type="button" class="btn btn-primary" asp-action="MenuUpdate" asp-controller="Home" asp-route-id="@menu.Id">Update</a>
-                                <a type="button" class="btn btn-danger" asp-action="MenuDelete" asp-controller="Home" asp-route-id="@menu.Id">Delete</a>
+                            <td class="w-25">
+                                <a type="button" class="btn btn-primary" asp-action="UpdateMenu" asp-controller="Home" asp-route-id="@menu.Id">Update</a>
+                                <a type="button" class="btn btn-danger" asp-action="DeleteMenu" asp-controller="Home" asp-route-id="@menu.Id">Delete</a>
                             </td>
 
                         </tr>
@@ -42,7 +42,7 @@
                 else
                 {
                     <tr>
-                        <td>Gosterilecek Bir Menu Yok</td>
+                        <td>Add new menu</td>
                     </tr>
                 }
             </tbody>

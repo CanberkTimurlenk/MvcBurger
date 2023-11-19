@@ -27,7 +27,7 @@ namespace MvcBurger.Web.Controllers
         }
         [HttpPost]
         [Route("u/Login")]
-        public async Task<IActionResult> Login(UserLoginVM loginVM)
+        public async Task<IActionResult> Login(UserLoginVM loginVM, string? returnUrl)
         {
 
             if (ModelState.IsValid)
@@ -48,10 +48,13 @@ namespace MvcBurger.Web.Controllers
                 HttpContext.Session.SetString("userId", loginResponse.UserId);
                 HttpContext.Session.SetString("roles", string.Join(",", loginResponse.Roles));
 
-                    if (loginResponse.Roles.Contains("Admin"))
-                        return RedirectToAction("Menus", "Home", new { area = "Admin" });
+                if (loginResponse.Roles.Contains("Admin"))
+                    return RedirectToAction("Menus", "Home", new { area = "Admin" });
 
-                    return RedirectToAction("Index", "Home");                
+                if (returnUrl is null)
+                    return RedirectToAction("Index", "Home");
+
+                return Redirect(returnUrl);
             }
 
             return View(loginVM);

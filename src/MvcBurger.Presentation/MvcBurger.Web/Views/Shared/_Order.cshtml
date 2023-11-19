@@ -15,27 +15,59 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/log.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/log.css">
 
-
+    <style>
+        body {
+            font-size: 16px;
+        }
+        h2, p, label, select, option {
+            font-size: 1rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
     <!-- header section starts  -->
 
-    <header class="header">
+    <header class="header d-flex align-items-stretch justify-content-between pb-2">
 
         <div id="menu-btn" class="fas fa-bars icons"></div>
         <div></div>
         <nav class="navbar">
-            <a asp-action="Index" asp-controller="Home">home</a>
-            <a asp-action="Index" asp-controller="Home">menu</a>
-            <a asp-action="Index" asp-controller="Home">about</a>
-            <span class="space"></span>
-            <a asp-action="Index" asp-controller="Home">contact</a>
+            <div class="row justify-content-sm-between">
+                <div class="col-sm-2 mt-3">
+
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Home">home</a>
+
+                </div>
+                <div class="col-sm-2 mt-3">
+
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Home">menu</a>
+
+                </div>
+                <div class="col-sm-4">
+
+                    <img src="/images/logo.png" alt="">
+
+                </div>
+                <div class="col-sm-2 mt-3">
+
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Home">about</a>
+
+                </div>
+                <div class="col-sm-2 mt-3">
+
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Home">contact</a>
+
+                </div>
+            </div>
         </nav>
-        <div>
-            <a asp-action="Cart" asp-controller="Order" class="fas fa-shopping-cart icons"></a>
+       <div>
+            <a asp-action="Cart" asp-controller="Order" class="fas fa-shopping-cart icons m-5"></a>
             @if (!User.Identity.IsAuthenticated)
             {
                 <a asp-action="Login" asp-controller="Access" class="fas fa-login icons">Login</a>
@@ -47,26 +79,19 @@
             }
         </div>
 
-        <a asp-asction="Index" asp-controller="Home" class="logo"><img src="/images/logo.png" alt=""></a>
-
     </header>
 
     <!-- header section ends  -->
     <!-- home section starts  -->
 
     <section class="home" id="home">
-
-        <div class="content">
-            
             @RenderBody()
-
-        </div>
-
     </section>
 
     <!-- home section ends -->
+    <section class="about" id="about"></section>
     <!-- contact section starts  -->
-
+    <section class="contact" id="contact"></section>
     <!-- contact section ends -->
     <!-- footer section starts  -->
 
