@@ -90,6 +90,7 @@ namespace MvcBurger.Web.Controllers
 
             return RedirectToAction(nameof(Cart), userCartVM);
         }
+        [Route("c/")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Cart(GetUserCartVM userCartVM)
         {
@@ -98,7 +99,7 @@ namespace MvcBurger.Web.Controllers
                 userCartVM.Cart = (await _mediator.Send(request)).Cart;
                 return View(userCartVM);
         }
-
+        [Route("co/")]
         public async Task<IActionResult> Checkout()
         {
             await _mediator.Send(new CheckoutRequest() { AppUserId = HttpContext.User.Claims.First().Value });
