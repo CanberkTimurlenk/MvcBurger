@@ -15,7 +15,7 @@ namespace MvcBurger.Web.Models.VMs
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        [MinLength(6), MaxLength(20)]
+        [MinLength(6, ErrorMessage ="Password must be min. 6 max. 20 characters!"), MaxLength(20, ErrorMessage = "Password must be min. 6 max. 20 characters!")]
         public string Password { get; set; }
         [Required]
         [DataType(DataType.MultilineText), MaxLength(255)]
