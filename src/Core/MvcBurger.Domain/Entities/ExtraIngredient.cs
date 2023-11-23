@@ -1,12 +1,13 @@
-﻿namespace MvcBurger.Domain.Entities
+﻿using MvcBurger.Domain.Entities.Common;
+
+namespace MvcBurger.Domain.Entities
 {
-    public class ExtraIngredient
+    public class ExtraIngredient : BaseEntity, IEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
 
-        public ICollection<MenuOrderExtraIngredient> MenuOrderExtraIngredient { get; set; }
+        public ICollection<OrderItemExtraIngredient> OrderItemExtraIngredient { get; set; }
 
     }
 

@@ -1,0 +1,36 @@
+﻿@using MvcBurger.Web.Models.VMs;
+@using Newtonsoft.Json;
+@model GetMenuListVM
+
+@{
+    ViewData["Title"] = "Home Page";
+    int delay = 150;
+}
+
+
+
+<section class="menu" id="menu">
+
+    <div class="heading">
+        <img src="images/title-img.png">
+        <h3>our menu</h3>
+    </div>
+
+    <div class="box-container">
+        @foreach (var item in Model.MenuList)
+        {
+            <div class="box" data-aos="fade-up" data-aos-delay="@delay">
+                <img src="@item.ImageUrl" alt="">
+                <div class="content">
+                    <h3>@item.Name</h3>
+                    <div class="price">$@item.Price</div>
+                    <a asp-action="CreateOrder" asp-controller="Order" asp-route-id="@item.Id" class="btn">add to cart</a>
+                </div>
+            </div>
+            delay += 150;
+        }    
+    </div>
+
+</section>
+
+

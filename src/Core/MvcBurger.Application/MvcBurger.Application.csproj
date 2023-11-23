@@ -7,15 +7,47 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Drink - Copy\**" />
+    <Compile Remove="Features\ExtraIngredient - Copy\**" />
+    <Compile Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
+    <Compile Remove="Features\Order - Copy\**" />
+    <Compile Remove="Features\Sauce - Copy\**" />
+    <Compile Remove="Features\SauceOrder - Copy\**" />
+    <Compile Remove="Features\Size - Copy\**" />
+    <EmbeddedResource Remove="Features\Drink - Copy\**" />
+    <EmbeddedResource Remove="Features\ExtraIngredient - Copy\**" />
+    <EmbeddedResource Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
+    <EmbeddedResource Remove="Features\Order - Copy\**" />
+    <EmbeddedResource Remove="Features\Sauce - Copy\**" />
+    <EmbeddedResource Remove="Features\SauceOrder - Copy\**" />
+    <EmbeddedResource Remove="Features\Size - Copy\**" />
+    <None Remove="Features\Drink - Copy\**" />
+    <None Remove="Features\ExtraIngredient - Copy\**" />
+    <None Remove="Features\ExtraIngredientMenuOrder - Copy\**" />
+    <None Remove="Features\Order - Copy\**" />
+    <None Remove="Features\Sauce - Copy\**" />
+    <None Remove="Features\SauceOrder - Copy\**" />
+    <None Remove="Features\Size - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MvcBurger.Domain\MvcBurger.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Menu\" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Serilog" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.1.1" />
+    <Folder Include="Features\OrderItemExtraIngredients\Queries\" />
+    <Folder Include="Features\SauceOrders\Queries\" />
+    <Folder Include="Features\Sauces\Profiles\" />
+    <Folder Include="Features\Sauces\Queries\" />
+    <Folder Include="Features\Users\Profiles\" />
   </ItemGroup>
 
 </Project>

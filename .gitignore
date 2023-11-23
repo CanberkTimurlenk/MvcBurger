@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/src/Presentation/MvcBurger.ConsoleUI
+/src/MvcBurger.ConsoleUI
+/src/Presentation/MvcBurger.Web

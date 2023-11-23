@@ -1,10 +1,11 @@
-﻿namespace MvcBurger.Domain.Entities
+﻿using MvcBurger.Domain.Entities.Common;
+
+namespace MvcBurger.Domain.Entities
 {
-    public class Drink
+    public class Drink : BaseEntity, IEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
-        public ICollection<MenuOrder> MenuOrder { get; set; }
+        public ICollection<OrderItem> OrderItem { get; set; }
     }
 
 }
