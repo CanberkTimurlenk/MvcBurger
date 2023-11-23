@@ -90,6 +90,10 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
                 });
                 return RedirectToAction(nameof(Menus));
             }
+
+            TempData["actionName"] = "UpdateMenu";
+            TempData["button"] = "Update Menu";
+
             return PartialView("CreateUpdateMenu", updatedMenu);
         }
         public async Task<IActionResult> DeleteMenu(Guid Id)
@@ -123,7 +127,10 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
                 });
                 return RedirectToAction(nameof(Extras));
             }
-            return View(newExtra);
+
+            TempData["actionName"] = "AddExtra";
+            TempData["button"] = "Add Ingredient";
+            return PartialView("CreateUpdateIngredient", newExtra);
         }
         [Route("/extra/update-{Id}")]
         public async Task<IActionResult> UpdateExtra(Guid Id)
@@ -139,10 +146,17 @@ namespace MvcBurger.Web.Areas.Admin.Controllers
 
             return PartialView("CreateUpdateIngredient", extra);
         }
+
         [HttpPost]
         [Route("/extra/update-{Id}")]
         public async Task<IActionResult> UpdateExtra(Guid Id, ExtraIngredientVM extra)
         {
+            TempData["actionName"] = "UpdateExtra";
+            TempData["button"] = "Update Ingredient";
+
+            if (!ModelState.IsValid)
+                return PartialView("CreateUpdateIngredient", extra);
+
             await _mediator.Send(new UpdateExtraIngredientRequest()
             {
                 Id = Id,
