@@ -68,7 +68,7 @@ Batuhan Bora Alaftar
 
 <br>
 
-![admin-menus](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/a024d3c2-5706-47bc-8d1f-2ffddb1cfb7c)
+![admin-menus](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/769843f3-853c-49c1-95f3-5e0bf55936a7)
 
 <br>
 
