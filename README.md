@@ -43,3 +43,18 @@ This comprehensive software design ensures a scalable, maintainable, and efficie
 ## Developers
 Canberk TİMURLENK <br>
 Batuhan Bora Alaftar
+
+![home](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/5bfc820a-5d7c-47e1-9495-ef919ad6e5fe)
+
+![menu-pagecart-item](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/300e188c-0cd7-49b0-ac1e-0b1fbd4b4326)
+
+![admin-menus](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/7df6deca-6594-43c4-86de-aeaa85f71029)
+
+![login](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/71eb4c07-1b2d-4911-83c8-ff51e3daf697)
+
+![register](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/600fc650-6484-4486-81f5-2d2b1b615158)
+
+![admin-menus](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/9a0108f3-a4c2-4be0-8fc3-76f9edae23b0)
+
+![admin-add-update](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/4b5e27ea-6636-41b2-b0bd-b3fcb29c5ea8)
+
