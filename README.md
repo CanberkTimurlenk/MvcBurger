@@ -44,17 +44,37 @@ This comprehensive software design ensures a scalable, maintainable, and efficie
 Canberk TİMURLENK <br>
 Batuhan Bora Alaftar
 
-![home](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/5bfc820a-5d7c-47e1-9495-ef919ad6e5fe)
+<br>
+<hr>
+<br>
 
-![menu-pagecart-item](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/300e188c-0cd7-49b0-ac1e-0b1fbd4b4326)
+![home](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/64b61916-7c9b-46b7-b11c-c820f78309f8)
 
-![admin-menus](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/7df6deca-6594-43c4-86de-aeaa85f71029)
+<br>
 
-![login](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/71eb4c07-1b2d-4911-83c8-ff51e3daf697)
+![menu-pagecart-item](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/ebef3024-68f4-494a-9de5-c765e615153d)
 
-![register](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/600fc650-6484-4486-81f5-2d2b1b615158)
+<br>
 
-![admin-menus](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/9a0108f3-a4c2-4be0-8fc3-76f9edae23b0)
+![cart-content](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/299dd4f2-069c-4e23-88d3-942e583e4fc2)
 
-![admin-add-update](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/4b5e27ea-6636-41b2-b0bd-b3fcb29c5ea8)
+<br>
+
+![login](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/1745398e-f2ce-496e-86b8-f30430fa60b4)
+
+<br>
+
+![register](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/98626856-857e-42f4-830b-45fdbb982520)
+
+<br>
+
+![admin-menus](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/a024d3c2-5706-47bc-8d1f-2ffddb1cfb7c)
+
+<br>
+
+![admin-add-update](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/be86add8-2126-4e92-97c2-3f5f59300f86)
+
+<br>
+
+![admin-extras](https://github.com/CanberkTimurlenk/MvcBurger/assets/18058846/959d1494-a1e4-4bc1-9bf0-7369f70a10ff)
 
